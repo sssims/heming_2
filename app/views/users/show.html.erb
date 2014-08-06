@@ -1,0 +1,108 @@
+<% @page_title = @view_user.username %>
+<div id='user_info'>
+  <div id='div_fullname'>
+    <a><%= @view_user.fullname %></a>
+    <span id='follow'>
+      <% if !@is_own_user %>
+        <% if @is_following %>
+          <a><%= link_to("-", {:controller => 'users', :action => 'unfollow', :to_unfollow => @view_user.id}) %></a>
+        <% else %>
+          <a><%= link_to("+", {:controller => 'users', :action => 'new_follow', :to_follow => @view_user.id}) %></a>
+        <% end %>
+      <% end %>
+    </span>
+  </div>
+</div>
+<div id='selector_arrow'>
+
+</div>
+<div id='user_nav'>
+  <a class='user_nav_button' id='posts'>Posts</a>
+  <a class='nav_bullet'> • </a>
+  <a class='user_nav_button' id='following'>Following</a>
+  <a class='nav_bullet'> • </a>
+  <a class='user_nav_button' id='followers'>Followers</a>
+  <a class='nav_bullet'> • </a>
+  <a class='user_nav_button' id='top_ten'>Top 10</a>
+  <a class='nav_bullet'> • </a>
+  <a class='user_nav_button' id='about'>About</a>
+</div>
+
+<hr id='user_divider'>
+
+<div id='user_dyn_area'>
+
+</div>
+
+<style>
+  #user_info {
+    display: table;
+    margin: 80px auto auto auto;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif; 
+    letter-spacing: -1px;
+  }
+
+  #follow a {
+    color: gray;
+    text-decoration: none;
+  }
+
+  #div_fullname {
+    font-size: large;
+    margin-bottom: 15px;
+  }
+
+  #user_nav {
+    padding-top: 5px;
+    display: table;
+    margin: auto;
+
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif; 
+    font-size: small;
+  }
+
+  .user_nav_button {
+    color: gray;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* below is an arrow above the subsection selectors */
+  /*
+    #selector_arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+
+    left: -15px; 
+
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+
+    border-top: 5px solid #000000;
+  }
+  */
+
+</style>
+
+<script type='text/javascript'>
+  var elem_prev = null;
+  $("a.user_nav_button").click(function(){
+    if(elem_prev != null) {
+      $('#' + elem_prev).css('color', 'gray');
+    }
+    var elem_id   = $(this).attr('id');
+    var view_user = "<%= @view_user.id%>";
+    $(this).css("color", "black");
+    elem_prev = $(this).attr('id');
+    //var elem_offset = $(this).offset().left
+    //$("#selector_arrow").css("left", elem_offset + 15);
+    $.ajax({
+      url: "/users/display_subpage",
+      data: { button_id: elem_id, view_user: view_user },
+      success: function (result) {
+        $("#user_dyn_area").html(result);
+      }
+    }); 
+  });
+</script>

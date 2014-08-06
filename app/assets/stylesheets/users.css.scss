@@ -1,0 +1,31 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sign_block {
+  width: 250px;
+  margin: 100px auto 10px auto; 
+}
+
+.sign_form{
+  padding: 0px 0px 0px 7px;
+  margin-bottom: 10px;
+
+  border-style: solid;
+  border-width: 1px;
+  border-color: #bcbcbc;
+  font-family: "Courier New", Courier, monospace;
+
+  height: 30px;
+  width:  235px;
+}
+
+.sign_submit {
+  height: 33px;
+  width:  244px;
+  color: #ffffff;
+  background: #000000;
+  font-family: "Courier New", Courier, monospace;
+  border: 0px;
+}
+

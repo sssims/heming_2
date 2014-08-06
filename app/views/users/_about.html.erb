@@ -1,0 +1,67 @@
+<div id='user_about_container'>
+  <div id='about_show'>
+    <a><%= @about_content %></a>
+  </div>
+  <div id='user_show_photo'>
+    <img src=<%= @about_photo %>>
+  </div>
+  <% if @is_own_user %>
+    <div id='edit_about_form' class='hidden'> 
+      <%= form_tag :action => 'edit_about' do %>
+        <%= text_field :edit_about_content, nil, :autocomplete => 'off', :value => @about_content %>
+      <% end %>
+    </div>  
+    <div id='about_edit_button'>
+      <input type='button' name='edit_button' value='edit'>
+    </div>
+    <div id='edit_cancel_button' class='hidden'>
+      <input type='button' name='cancel_button' value='cancel'>
+    </div>
+    <div id='user_photo_edit'>
+      <%= link_to("add/edit photo", {:action => 'edit_photo'})%>
+    </div>
+  <% end %>
+</div>
+
+<style>
+  #user_about_container {
+    display: table;
+    margin: auto;
+  }
+
+  #user_about_content {
+    float: left;
+    width: 100px;
+  }
+
+  #edit_about_form {
+    float: left;
+  }
+  
+  #about_edit_button {
+    float: left;
+  }
+ 
+  #user_about_edit {
+    float: left;
+  }
+
+  .hidden {
+    display: none;
+  }
+</style>
+
+<script type='text/javascript'>
+$(document).ready( function() {
+  $("#about_edit_button").click(function(){
+    $("#edit_about_form").removeClass("hidden");
+    $("#edit_cancel_button").removeClass("hidden");
+    $("#about_show").addClass("hidden");
+  });
+  $("#edit_cancel_button").click(function(){
+    $("#edit_about_form").addClass("hidden");
+    $("#about_show").removeClass("hidden");
+    $(this).addClass("hidden");
+  });
+});
+</script>

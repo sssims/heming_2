@@ -1,0 +1,37 @@
+<% @page_title = "login" %>
+<div class="sign_block">
+  <div id='login_errors'>
+    <%= @error_message %>
+  </div>
+  <%= form_tag(:action => 'login_attempt') do %>
+    <%= text_field_tag :username_or_email, nil, placeholder: 'Username or Email', class: 'sign_form' %>
+    <%= password_field_tag :login_password, nil, placeholder: 'Password', class: 'sign_form' %>
+    <input class='sign_submit' name='commit' type='submit' value='Log In' />
+ <% end %>
+ <div id='signup_text'>
+   <p>Don't have an account? <%= link_to "Sign Up", :controller => 'users', :action => 'new' %></p>
+ </div>
+</div>
+
+<style>
+
+#login_errors {
+  width: 300px;
+  height: 20px;
+
+  font-family: "Courier New", Courier, monospace;
+  font-size: small;
+  color: #E60000;
+  letter-spacing: -1px;
+}
+
+#signup_text {
+  margin-top: 10px;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-size: small;
+  letter-spacing: -1px;
+  color: #7e7e7e;
+}
+
+</style>

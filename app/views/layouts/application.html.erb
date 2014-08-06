@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> hemingwire
+  <% if @page_title %>
+    | <%= @page_title %>
+  <% end %>
+  </title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag '/favicon.ico' %>
+</head>
+<body>
+<% unless @no_nav_bar %>  
+  <%= render "layouts/nav_bar" %>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>
+
+<style>
+
+  body {
+    margin: 0px;
+  }
+
+</style>

@@ -1,0 +1,14 @@
+<% @page_title = "Post Book | hemingwire" %>
+<div>
+  <%= form_tag :action => 'get_book', :id => 'book_form' do %>
+    <p>Title:</br><%= text_field_tag :book_title, nil, :autocomplete => 'off' %></p>
+    <%#= submit_tag("search")%>
+  <% end %>
+</div>
+<%#= observe_field :book_title,
+  :update => 'results',
+  :url => {:controller => 'books', :action => 'get_book_live'},
+  :with => :book_title %>
+
+<div id="results">
+</div>

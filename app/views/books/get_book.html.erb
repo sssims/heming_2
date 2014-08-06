@@ -1,0 +1,8 @@
+<div>
+  <% @books.each do |book| %>
+    <%#= book.title %>
+    <img src=<%= book.image_link(:zoom => 1) %>></br>
+  <% end %>
+</div>
+
+

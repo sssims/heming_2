@@ -1,0 +1,12 @@
+<h3>results:</h3>
+<% @books.each do |book| %>
+  <span class='book_image'>
+  <img src=<%= book.image_link(:zoom => 1) %>>
+  </span>
+<% end %>
+
+<script type="text/javascript">
+$('.book_image').mouseover( function() {
+  $('.book_image').css("visibility", "hidden");
+});
+</script>

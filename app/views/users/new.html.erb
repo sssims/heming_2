@@ -1,0 +1,19 @@
+<% @page_title = "signup" %>
+<div id='signup_errors'>
+  <% if @user.errors.any? %>
+    <% @user.errors.each do |attr, mssg| %>
+      <a> <%= attr %> | <%= mssg %></a></br>
+    <% end %>
+  <% end %>
+</div>
+<div class="sign_block" id='signup'>
+    <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
+      <%= f.text_field :username, class: 'sign_form', placeholder: 'username' %>
+      <%= f.text_field :fullname, class: 'sign_form', placeholder: 'full name' %>
+      <%= f.text_field :email,    class: 'sign_form', placeholder: 'email' %> 
+      <%= f.password_field :password, class: 'sign_form', placeholder: 'password' %>
+      <%= f.password_field :password_confirmation, class: 'sign_form', placeholder: 'confirm password' %>
+      <%= f.submit :Signup, class: 'sign_submit' %>
+    <% end %>
+</div>
+

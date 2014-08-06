@@ -1,0 +1,102 @@
+<div id='nav_container'>
+  <div id='nav_home' class='nav_item'>
+    <a><%= link_to("Hemingwire", {:controller => 'home', :action => 'index'})%></a>
+  </div>
+  <div id='nav_search'>
+    <%= form_tag :controller => 'users', :action => 'search' do %>
+     <%= text_field_tag :search_people_content, nil, :autocomplete => 'off', :placeholder => 'Search People...' %>
+    <% end %>
+  </div>
+  <% if @logged_in %>
+    <div id='nav_logout' class='nav_item'>
+      <a><%= link_to("Logout", {:controller => 'users', :action => 'logout'})%></a>
+    </div>
+    <div id='nav_own_page' class='nav_item'>
+      <a><%= link_to(@curr_fullname, {:controller => 'users', :action => 'show', :id => @curr_user_id }) %> </a>
+    </div>
+    <div id='nav_post_book' class='nav_item'>
+       <a><%= link_to("Post", {:controller => 'books', :action => 'index'})%></a>
+    </div>
+  <% else %>
+    <div id='nav_signup' class='nav_item'>
+      <a><%= link_to("Sign Up", {:controller => 'users', :action => 'new'})%></a>
+    </div>
+    <div id='nav_login' class='nav_item'> 
+      <a><%= link_to("Login", {:controller => 'users', :action => 'login'})%></a>
+    </div>
+  <% end %>
+</div>
+
+<style>
+
+.nav_item {
+  float: left;
+  padding: 8px 14px 7px 14px;
+  border-style: solid;
+  border-width: 0px 0px 0px 1px;
+  border-color: #CCCCCC;
+  background: #FFFFFF;
+} 
+
+.nav_item a {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif;
+  font-size: 10pt;
+  text-decoration: none;
+  color: #000000;
+}
+
+#nav_home {
+  border-right-width: 1px;
+}
+
+#nav_login {
+  float: right;
+}
+
+#nav_search {
+  float: left;
+  padding-left: 7px;
+  padding-top: 2px;
+}
+
+#search_people_content {
+  border: none;
+  width: auto;
+  height: 30px;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif;
+  font-size: 10pt;
+}
+
+#search_people_content:focus {
+  outline-width: 0;
+}
+
+#nav_logout {
+  float: right;
+}
+
+#nav_own_page {
+  float: right;
+}
+
+#nav_signup {
+  float: right;
+}
+
+#nav_post_book {
+  float: right;
+}
+
+#nav_container {
+  height: 34px;
+
+  /* IMPROVE */
+
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+  border-color: #CCCCCC;
+
+  margin: 0px;
+}
+
+</style>

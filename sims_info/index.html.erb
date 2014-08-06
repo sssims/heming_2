@@ -1,0 +1,31 @@
+<% @page_title = "Post Book | hemingwire" %>
+<div>
+  <%= form_tag(:action => 'get_book', :id => 'book_form') do %>
+    <p>Title:</br><%= text_field_tag(:book_title) %></p>
+    <%#= submit_tag("search")%>
+  <% end %>
+</div>
+<%#= observe_field :book_title,
+  :update => 'results',
+  :url => {:controller => 'books', :action => 'get_book_live'},
+  :with => :book_title %>
+
+<div id="results">
+</div>
+<script type="text/javascript">
+  $(document).ready( function update_books() {
+    //$("#book_title").keyup(function(){ // execute when key is released
+    var user_search = $("#book_title").serialize();
+    if($("#book_title").val() != "") {
+      $.ajax({
+        url: "/books/get_book_live",
+        data: user_search,
+        success: function (result) {
+          $("#results").html(result);
+        }
+      });
+    }
+    setTimeout(update_books, 1500);
+  });
+</script>
+

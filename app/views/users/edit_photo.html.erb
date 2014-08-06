@@ -1,0 +1,10 @@
+<div id='upload_photo_form'>
+  <h5> upload a photo </h5>
+  <% if @upload_error %>
+    <%=  @upload_error %>
+  <% end %>
+  <%= form_tag({:action => 'upload_photo'}, {:multipart => true}) do %>
+    <%= file_field_tag :uploadfile %></br>
+    <%= submit_tag %>
+  <% end %>
+</div>

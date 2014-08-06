@@ -1,0 +1,30 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#page_title {
+  margin: 30px 0px 25px 300px;
+
+  /* font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif; */
+  font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif;
+  font-size: 24pt;
+  font-style: italic;
+}
+
+#feed_window {
+  background: #FFFFFF none repeat scroll 0 0;
+  width: auto;
+
+
+
+  overflow: auto;
+}
+
+#feed_window > #feed_content {
+  width: 10000px;
+}
+
+#book_blurb {
+  /* background: #eaeaea; */
+}
+

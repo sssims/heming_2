@@ -1,0 +1,10 @@
+<div>
+
+  <%= form_for(:blurb, :url => {:controller => 'books', :action => 'submit_book'}) do |f| %>
+  <p>Your Thoughts:</br><%= text_field_tag :content, nil, :autocomplete => 'off' %></p>
+  <%= hidden_field_tag "title", @b_title %>
+  <%= hidden_field_tag "isbn", @b_isbn %>
+  <%= f.submit %>
+  <% end %>
+
+</div>

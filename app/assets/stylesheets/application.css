@@ -1,0 +1,84 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+#book_blurb {
+  float: left;
+  width: 220px;
+ 
+  margin: 0px 20px 0px 20px;
+  border-radius: 5px;
+}
+
+#book_blurb > #cover {
+  display: table;
+  margin: 5px auto 5px auto;
+}
+
+#book_blurb > #title {
+  display: table;
+  margin: 5px auto 5px auto;
+  /* color: #4f4f4f; */
+}
+
+#book_blurb > #wrapper {
+  margin: 5px;
+}
+
+#book_blurb > #wrapper > #user a {
+  /*
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: -1px;
+  */
+  color: #0037A1;
+
+  text-decoration: none;
+}
+
+#book_blurb > #wrapper > #content {
+
+  /* font-family: "minion-pro", times, serif; */
+  /* font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif; */
+  letter-spacing: -0.5px;
+}
+
+#book_blurb > #dividor {
+  margin: 5px 0px 5px 0px;
+  border-color: #FFFFFF;
+}
+
+#book_blurb > #wrapper > #user > #date {
+  color: gray;
+}
+
+.blurb_text {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+}
+
+#user_summary {
+  float: left;
+  margin: 5px;
+  /* font-family: "Courier New", Courier, monospace; */
+}
+
+#user_summary > #photo {
+  margin: 5px;
+}
+
+#user_summary > #name {
+  display: table;
+  margin: auto;
+}
+

@@ -1,0 +1,46 @@
+<% i = 0 %>
+<% @books.each do |book| %>
+  <span class='book_image' id=<%= book.isbn %> title=<%= @titles[i] %>>
+    <img src=<%= book.image_link(:zoom => 1) %> title=<%= book.image_link(:zoom => 4) %>> 
+  </span>
+  <% i += 1 %>
+<% end %>
+<div>
+  <%= @blaze_it %>
+</div>
+
+<div id='book_form_area'>
+</div>
+
+
+<script type="text/javascript">
+$('.book_image').click( function() {
+  $('.book_image').removeClass('selected');
+  $(this).addClass('selected');
+
+  // ajax request to action that renders partial with form.
+
+  var book_info = { 
+    'isbn' : $(this).attr('id'), 
+    'img' : $(this).find('img').attr('title'), 
+    'thumb' : $(this).find('img').attr('src'), 
+    'title' : $(this).attr('title')
+  };
+
+  $.ajax({
+    url: "/books/select_book",
+    data: book_info,
+    success: function (result) {
+      $("#book_form_area").html(result);
+    }
+  });
+});
+</script>
+
+<style>
+  .selected img { 
+    border-style: solid;
+    border-width: 2px;
+    border-color: red;
+  }
+</style>
