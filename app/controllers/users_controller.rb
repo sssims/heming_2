@@ -30,7 +30,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @view_user = User.find(params[:id])
+    user = User.find(params[:id])
+  
+    @user_id    = user.id
+    @user_photo = user.photo_link
+    @user_about = user.about
+    @user_name  = user.fullname.titleize
 
     @is_following = Relationship.exists?(follower_id: session[:user_id], followed_id: params[:id])
     @is_own_user = (params[:id].to_i == session[:user_id].to_i)
@@ -137,7 +142,8 @@ class UsersController < ApplicationController
   def search
     user_query = params[:search_people_content]
 
-    @results = User.where("lower(username) = ?", user_query.downcase)
+    @results = User.where("username LIKE ? OR fullname LIKE ?", "%#{user_query}%", "%#{user_query}%")
+
   end
 
   def edit_photo 

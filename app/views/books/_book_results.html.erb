@@ -1,17 +1,26 @@
-<% i = 0 %>
-<% @books.each do |book| %>
-  <span class='book_image' id=<%= book.isbn %> title=<%= @titles[i] %>>
-    <img src=<%= book.image_link(:zoom => 1) %> title=<%= book.image_link(:zoom => 4) %>> 
-  </span>
-  <% i += 1 %>
-<% end %>
-<div>
-  <%= @blaze_it %>
+<div id="book_scroll_container">
+  <!--<div id="books_scroll_left">
+    <div>
+      A
+    </div>
+  </div>-->
+  <div id="book_results_window">
+    <% i = 0 %>
+    <% @books.each do |book| %>
+      <span class='book_image' id=<%= book.isbn %> title=<%= @titles[i] %>>
+        <img src=<%= book.image_link(:zoom => 1) %> title=<%= book.image_link(:zoom => 4) %>> 
+      </span>
+      <% i += 1 %>
+    <% end %>
+  </div>
+  <!--<div id="books_scroll_right">
+    <div>
+      A
+    </div>
+  </div>-->
 </div>
-
 <div id='book_form_area'>
 </div>
-
 
 <script type="text/javascript">
 $('.book_image').click( function() {
@@ -32,12 +41,29 @@ $('.book_image').click( function() {
     data: book_info,
     success: function (result) {
       $("#book_form_area").html(result);
+      $("#blurb_form_field").focus();
     }
   });
 });
 </script>
 
 <style>
+  #books_scroll_right {
+    float: right;
+  }
+ 
+  #books_scroll_left {
+    float: left;
+  }
+
+  #book_results_window {
+    display: inline-block;
+    overflow: auto;
+    white-space: nowrap;
+
+    width: 450px;
+  }
+
   .selected img { 
     border-style: solid;
     border-width: 2px;

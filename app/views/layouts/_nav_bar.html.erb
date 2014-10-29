@@ -1,30 +1,31 @@
 <div id='nav_container'>
   <div id='nav_home' class='nav_item'>
-    <a><%= link_to("Hemingwire", {:controller => 'home', :action => 'index'})%></a>
+    <%= link_to("Hemingwire", {:controller => 'home', :action => 'index'})%>
   </div>
+  <% if @logged_in %>
+    <div id='nav_logout' class='nav_item'>
+      <%= link_to("Logout", {:controller => 'users', :action => 'logout'})%>
+    </div>
+    <div id='nav_own_page' class='nav_item'>
+      <%= link_to(@curr_fullname, {:controller => 'users', :action => 'show', :id => @curr_user_id }) %> 
+    </div>
+    <div id='nav_post_book' class='nav_item'>
+      <%#= link_to("Post", {:controller => 'books', :action => 'index'})%>
+      <a id="post_book_link">Post</a>
+    </div>
+  <% else %>
+    <div id='nav_signup' class='nav_item'>
+      <%= link_to("Sign Up", {:controller => 'users', :action => 'new'})%>
+    </div>
+    <div id='nav_login' class='nav_item'> 
+      <%= link_to("Login", {:controller => 'users', :action => 'login'})%>
+    </div>
+  <% end %>
   <div id='nav_search'>
     <%= form_tag :controller => 'users', :action => 'search' do %>
      <%= text_field_tag :search_people_content, nil, :autocomplete => 'off', :placeholder => 'Search People...' %>
     <% end %>
   </div>
-  <% if @logged_in %>
-    <div id='nav_logout' class='nav_item'>
-      <a><%= link_to("Logout", {:controller => 'users', :action => 'logout'})%></a>
-    </div>
-    <div id='nav_own_page' class='nav_item'>
-      <a><%= link_to(@curr_fullname, {:controller => 'users', :action => 'show', :id => @curr_user_id }) %> </a>
-    </div>
-    <div id='nav_post_book' class='nav_item'>
-       <a><%= link_to("Post", {:controller => 'books', :action => 'index'})%></a>
-    </div>
-  <% else %>
-    <div id='nav_signup' class='nav_item'>
-      <a><%= link_to("Sign Up", {:controller => 'users', :action => 'new'})%></a>
-    </div>
-    <div id='nav_login' class='nav_item'> 
-      <a><%= link_to("Login", {:controller => 'users', :action => 'login'})%></a>
-    </div>
-  <% end %>
 </div>
 
 <style>
@@ -54,14 +55,17 @@
 }
 
 #nav_search {
-  float: left;
+  overflow: hidden;
+
   padding-left: 7px;
   padding-top: 2px;
+
 }
 
 #search_people_content {
+  width: 100%;
+
   border: none;
-  width: auto;
   height: 30px;
   font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif;
   font-size: 10pt;
@@ -87,6 +91,15 @@
   float: right;
 }
 
+/* post_book_link is not an href. The navigating is done with a jQuery click and jQuery ajax 
+ * ==> this makes it look like a link 
+ */
+
+#post_book_link {
+   cursor: pointer;
+   cursor: hand;
+}
+
 #nav_container {
   height: 34px;
 
@@ -95,6 +108,8 @@
   border-width: 0px 0px 1px 0px;
   border-style: solid;
   border-color: #CCCCCC;
+
+  background: #FFFFFF;
 
   margin: 0px;
 }

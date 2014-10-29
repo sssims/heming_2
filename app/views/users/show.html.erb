@@ -1,108 +1,139 @@
-<% @page_title = @view_user.username %>
-<div id='user_info'>
-  <div id='div_fullname'>
-    <a><%= @view_user.fullname %></a>
-    <span id='follow'>
-      <% if !@is_own_user %>
-        <% if @is_following %>
-          <a><%= link_to("-", {:controller => 'users', :action => 'unfollow', :to_unfollow => @view_user.id}) %></a>
-        <% else %>
-          <a><%= link_to("+", {:controller => 'users', :action => 'new_follow', :to_follow => @view_user.id}) %></a>
-        <% end %>
-      <% end %>
-    </span>
+<% @page_title = @user_name %>
+
+<div id='user_page_container'>
+<div id='perm_panel'>
+  <div id='user_info'>
+    <div id='name'>
+      <a><%= @user_name %></a>
+    </div>
+    <img id='photo' src=<%= @user_photo%>>
+    <div id='about'>
+      <a id='text'><%= @user_about %></a>
+    </div>
+  </div>
+  <div id='nav'>
+    <div id='posts' class='selected link'>
+      <a class='button_text'>posts</a>
+    </div>
+    <div id='followers' class='link'>
+      <a class='button_text'>followers</a>
+    </div>
+    <div id='following' class='link'>
+      <a class='button_text'>following</a>
+    </div>
+    <div id='top_ten' class='link'>
+      <a class='button_text'>top ten</a>
+    </div>
   </div>
 </div>
-<div id='selector_arrow'>
-
-</div>
-<div id='user_nav'>
-  <a class='user_nav_button' id='posts'>Posts</a>
-  <a class='nav_bullet'> • </a>
-  <a class='user_nav_button' id='following'>Following</a>
-  <a class='nav_bullet'> • </a>
-  <a class='user_nav_button' id='followers'>Followers</a>
-  <a class='nav_bullet'> • </a>
-  <a class='user_nav_button' id='top_ten'>Top 10</a>
-  <a class='nav_bullet'> • </a>
-  <a class='user_nav_button' id='about'>About</a>
-</div>
-
-<hr id='user_divider'>
-
-<div id='user_dyn_area'>
-
+<div id='info_window'>
 </div>
 
 <style>
-  #user_info {
+  html, body {
+    height: 100%;
+  }
+
+  #user_page_container {
+    position: relative;
+  }
+
+  #perm_panel {
+    float: left;
+
+    /*
+    border-style: solid;
+    border-width: 0px 1px 0px 0px;
+    */
+  }
+
+  #perm_panel > #user_info {
+    float: left;
+    margin: 50px 5px 0px 50px;
+  }
+
+  #perm_panel > #user_info > #name {
     display: table;
-    margin: 80px auto auto auto;
-    font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif; 
-    letter-spacing: -1px;
+    margin: 5px auto 5px auto;
+   
+    font-size: 20pt;
+    font-family: "minion-pro", times, serif;
+    font-weight: bold;
   }
 
-  #follow a {
-    color: gray;
-    text-decoration: none;
+  #perm_panel > #user_info > #photo{
+    border-style: solid;
+    border-width: 1px;
   }
 
-  #div_fullname {
-    font-size: large;
-    margin-bottom: 15px;
+  #perm_panel > #user_info > #about {
+    padding: 2px;
+
+    margin: 5px 0px 5px 0px;
+
+    font-family: "Courier", Courier, monospace;
+    font-size: 10pt;
+    letter-spacing: -0.5pt;
+  } 
+
+  #perm_panel > #nav {
+    float: left;
+    margin: 100px 0px 5px 0px;
   }
 
-  #user_nav {
-    padding-top: 5px;
-    display: table;
-    margin: auto;
+  #perm_panel > #nav > .link {
+    padding: 2px;
+    margin: 5px 5px 5px 5px;
 
-    font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif; 
-    font-size: small;
-  }
-
-  .user_nav_button {
-    color: gray;
-    text-decoration: none;
     cursor: pointer;
   }
 
-  /* below is an arrow above the subsection selectors */
-  /*
-    #selector_arrow {
-    position: absolute;
-    width: 0;
-    height: 0;
-
-    left: -15px; 
-
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-
-    border-top: 5px solid #000000;
+  #perm_panel > #nav > .selected {
+    margin-right: 0px;
+    border-right: none;
   }
-  */
+
+  #perm_panel > #nav > .link > a {
+    font-family: "Courier", Courier, monospace;
+    font-size: 10pt;
+    letter-spacing: -0.5pt;
+    text-decoration: none;
+  }
+
+  #info_window {
+    position: absolute;
+    top: 20px;
+    left: 420px;
+  }
 
 </style>
 
 <script type='text/javascript'>
-  var elem_prev = null;
-  $("a.user_nav_button").click(function(){
-    if(elem_prev != null) {
-      $('#' + elem_prev).css('color', 'gray');
-    }
-    var elem_id   = $(this).attr('id');
-    var view_user = "<%= @view_user.id%>";
-    $(this).css("color", "black");
-    elem_prev = $(this).attr('id');
-    //var elem_offset = $(this).offset().left
-    //$("#selector_arrow").css("left", elem_offset + 15);
+  $(document).ready( function() {
     $.ajax({
       url: "/users/display_subpage",
-      data: { button_id: elem_id, view_user: view_user },
+      data: { button_id: "posts", view_user: "<%= @user_id %>"},
       success: function (result) {
-        $("#user_dyn_area").html(result);
+        $("#info_window").html(result);
       }
-    }); 
+    });
+  });
+ 
+  $(document).ready( function() {
+    var elem_prev = 'posts';
+    $("#perm_panel > #nav > .link").click( function(){
+      $("#" + elem_prev).removeClass('selected');
+      $(this).addClass('selected'); 
+      var elem_id   = $(this).attr('id');   
+      var view_user = "<%= @user_id %>";
+      elem_prev = elem_id;
+      $.ajax({
+        url: "/users/display_subpage",
+        data: { button_id: elem_id, view_user: view_user },
+        success: function (result) {
+          $("#info_window").html(result);
+        }
+      });
+    });
   });
 </script>

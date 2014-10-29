@@ -1,21 +1,26 @@
 class HomeController < ApplicationController
 
   def get_blurbs
+
+    # How to order these
+
     blurb_array = []
 
     # the below is for selecting by 'credited' users
-    #blurbs = Blurb.select("*").joins(:user, :book).where("users.cred = ?", true)
+    #blurbs = Blurb.select("*").joins(:user, :book).where("users.cred = ?", true).order(updated_at: :desc)
 
-    blurbs = Blurb.select("*").joins(:user, :book)
+    blurbs = Blurb.select("*").joins(:user, :book).order(updated_at: :desc)
+
+    temp_count = 0;
 
     blurbs.each do |blurb|
       blurb_content = []
       blurb_content.push(blurb.thumb_path)
 
       if blurb.title.length > 28
-        title = blurb.title[0..28] + '...'
+        trunc_title = blurb.title[0..28] + '...'
 
-        blurb_content.push(title.tr("-", " "))
+        blurb_content.push(trunc_title.tr("-", " "))
       else
         blurb_content.push(blurb.title.tr("-", " "))
       end

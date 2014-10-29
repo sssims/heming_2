@@ -1,5 +1,13 @@
 <div id='search_results'>
   <% @results.each do |result| %>
-    <%= link_to(result.fullname, {:action => 'show', :id => result.id}) %>
+    <div class='search_oneresult'>
+      <%= link_to(result.fullname, {:action => 'show', :id => result.id}) %>
+    <div>
   <% end %>
 </div>
+
+<style>
+  html, body {
+    height: 100%;
+  }
+</style>

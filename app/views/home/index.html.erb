@@ -1,26 +1,28 @@
 <div id='page_title'>
   <a>FEATURED POSTS</a>
 </div>
-<div id='feed_window'>
-  <div id='feed_content'>
-    <% @blurb_array.each do |blurbs| %>
-      <div id='book_blurb' class='blurb_container'>
-        <div id='title' class='blurb_text'>
-            <%= blurbs[1] %>
+<div id='feed_content'>
+  <% @blurb_array.each do |blurbs| %>
+    <div id='book_blurb' class='blurb_container'>
+      <div id='title' class='blurb_text'>
+          <%= blurbs[1] %>
+      </div>
+      <div id='cover'>
+        <img src=<%= blurbs[0] %>>
+      </div>
+      <!--<hr noshade id='dividor'>-->
+      <div id='wrapper'>
+        <div id='user' class='blurb_text'>
+          <%= link_to(blurbs[3], {:controller => 'users', :action => 'show', :id => blurbs[4]})%>
         </div>
-        <div id='cover'>
-          <img src=<%= blurbs[0] %>>
+        <div id='date' class='blurb_text'>
+          <%= blurbs[5] %>
         </div>
-        <hr id='dividor'>
-        <div id='wrapper'>
-          <div id='user' class='blurb_text'>
-            <%= link_to(blurbs[3], {:controller => 'users', :action => 'show', :id => blurbs[4]}) %> |<a id='date'> <%= blurbs[5] %></a>
-          </div>
-          <div id='content' class='blurb_text'>
-            <%= blurbs[2] %>
-          </div>
+        <div id='content' class='blurb_text'>
+          <%= blurbs[2] %>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
+

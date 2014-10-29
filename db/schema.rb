@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140801000026) do
+ActiveRecord::Schema.define(version: 20141016235217) do
 
   create_table "blurbs", force: true do |t|
     t.integer  "user_id"
@@ -57,5 +57,8 @@ ActiveRecord::Schema.define(version: 20140801000026) do
     t.string   "photo_link"
     t.boolean  "cred"
   end
+
+  add_index "users", ["fullname"], name: "index_users_on_fullname"
+  add_index "users", ["username"], name: "index_users_on_username"
 
 end

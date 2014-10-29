@@ -4,18 +4,22 @@ class BooksController < ApplicationController
 
   def index
 
+    render :partial => 'index_partial', :layout => false
+
   end
 
   # if javascript is disabled on client browser navigate to new page.
   def get_book
     @count = 0
-    book_title = params[:book_title]
+    book_title = params[:book_search_field]
     @books = GoogleBooks.search(book_title, {:count => 10})
     @books = @books.first(10)
   end 
   
   def get_book_live
-    search = params[:book_title]
+    search = params[:book_search_field]
+
+
     @books = GoogleBooks.search(search, {:count => 5})
 
     i = 0;
@@ -92,7 +96,7 @@ class BooksController < ApplicationController
     blurb_book = Book.find_by_title(params[:title])
  
     new_blurb = Blurb.new
-    new_blurb.content = params[:content]
+    new_blurb.content = params[:blurb_form_field]
     new_blurb.user_id = session[:user_id]
     new_blurb.book_id = blurb_book.id
     new_blurb.save

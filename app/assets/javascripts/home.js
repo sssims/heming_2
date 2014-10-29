@@ -11,11 +11,22 @@ $(document).ready( function() {
 });
 */
 
+/*
 $(window).load( function() {
   $('.blurb_container').each(function() {
-    var top_margin = 206 - $(this).find("img").height();
+    var top_margin = 211- $(this).find("img").height();
     $(this).css('margin-top', top_margin);
   });
-  $('#feed_window').css('height', $(window).height() - 128);
 });
+*/
+
+/* SCROLL BAR ADJUST ON WINDOW RESIZE FOR SIDE-SCROLLING */
+/*
+$(document).ready( function() {
+  $('#feed_window').css('height', $(window).height() - 128);
+  window.addEventListener('resize', function() {
+    $('#feed_window').css('height', $(window).height() - 128);
+  });
+});
+*/
 

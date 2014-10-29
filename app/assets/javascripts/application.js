@@ -15,4 +15,28 @@
 //= require turbolinks
 //= require_tree . 
 
+/* START SECTION posting modal dialog box  */
 
+/* TODO: Allow post to save across pages */
+
+$(document).ready( function() {
+  load_post_modal();
+});
+
+$(document).on("page:load", function() {
+  load_post_modal();
+});
+
+$(document).keyup(function (e) {
+  if(e.keyCode == 27) {
+    $("#overlay").css("visibility", "hidden");
+  }
+});
+
+$(document).on("click", "#post_book_link", function() {
+  el = document.getElementById("overlay");
+  el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+  $("#book_search_field").focus();
+});
+
+/* END SECTION posting modal dialog box */
