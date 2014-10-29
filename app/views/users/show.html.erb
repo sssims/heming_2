@@ -110,6 +110,7 @@
 
 <script type='text/javascript'>
   $(document).ready( function() {
+    alert("hello");
     $.ajax({
       url: "/users/display_subpage",
       data: { button_id: "posts", view_user: "<%= @user_id %>"},

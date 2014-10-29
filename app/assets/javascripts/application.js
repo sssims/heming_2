@@ -17,6 +17,15 @@
 
 /* START SECTION posting modal dialog box  */
 
+function load_post_modal() {
+  $.ajax({   
+    url: "/books/",
+    success: function (result) {
+      $("#books_ajax_target").html(result);
+    }
+  });
+}
+
 /* TODO: Allow post to save across pages */
 
 $(document).ready( function() {
