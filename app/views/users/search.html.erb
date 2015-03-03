@@ -1,6 +1,7 @@
 <div id='search_results'>
   <% @results.each do |result| %>
-    <div class='search_oneresult'>
+    <div class='search_one_result'>
+      <img src=<% result.photo_link %>>
       <%= link_to(result.fullname, {:action => 'show', :id => result.id}) %>
     <div>
   <% end %>
@@ -10,4 +11,11 @@
   html, body {
     height: 100%;
   }
+
+  .search_one_result a {  
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    font-size: 14pt;
+    text-decoration: none;
+  }
+ 
 </style>
