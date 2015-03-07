@@ -19,5 +19,5 @@
 config/database.yml
 
 #ignore user content
-content/covers/*
-content/user_photos/*
+content/covers/*.jpeg
+content/user_photos/*.jpeg
