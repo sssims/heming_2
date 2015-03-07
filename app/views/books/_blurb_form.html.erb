@@ -2,8 +2,8 @@
 
   <%= form_tag('books/submit_book') do %>
     <p><%= text_area_tag :blurb_form_field, nil, :autocomplete => 'off', :placeholder => 'Your thoughts...' %></p>
-    <%= hidden_field_tag "title", @b_title %>
     <%= hidden_field_tag "isbn", @b_isbn %>
+    <%= hidden_field_tag "title", @b_title %>
     <%= submit_tag 'submit' %>
   <% end %>
 
