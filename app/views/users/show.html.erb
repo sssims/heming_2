@@ -5,6 +5,13 @@
   <div id='user_info'>
     <div id='name'>
       <a><%= @user_name %></a>
+      <% if !@is_own_user %>
+        <% if !@is_following %>
+          <%= link_to("+", {:controller => 'users', :action => 'new_follow', :to_follow => @user_id}, :class => 'follow-button')%>
+        <% else %>
+          <%= link_to("-", {:controller => 'users', :action => 'unfollow', :to_unfollow => @user_id}, :class => 'follow-button')%>
+        <% end %>
+      <% end %>
     </div>
     <img id='photo' src=<%= @user_photo%>>
     <div id='about'>
