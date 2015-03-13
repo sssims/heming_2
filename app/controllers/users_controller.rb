@@ -128,6 +128,8 @@ class UsersController < ApplicationController
       @about_photo   = User.find(params[:view_user]).photo_link
 
       render :partial => 'about', :layout => false 
+    when 'edit_profile'
+      render 'edit_photo', :layout => false
     end
   end
  

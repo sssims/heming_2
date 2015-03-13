@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get  'users/follow_show' # THIS IS FOR TESTING. REMOVE FOR PRODUCTION
   get  'users/blurbs_show' # THIS IS FOR TESTING. REMOVE FOR PRODUCTION
   get  'users/users_show' # THIS IS FOR TESTING. REMOVE FOR PRODUCTION
-  get  'users/edit_photo' # THIS IS FOR TESTING. REMOVE FOR PRODUCTION
+  get  'users/edit_photo' 
 
   post 'users/upload_photo'
 

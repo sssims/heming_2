@@ -5,7 +5,7 @@
   <div id='user_info'>
     <div id='name'>
       <a><%= @user_name %></a>
-      <% if !@is_own_user %>
+      <% if !@is_own_user and @logged_in %>
         <% if !@is_following %>
           <%= link_to("+", {:controller => 'users', :action => 'new_follow', :to_follow => @user_id}, :class => 'follow-button')%>
         <% else %>
@@ -31,6 +31,11 @@
     <div id='top_ten' class='link'>
       <a class='button_text'>top ten</a>
     </div>
+    <% if @is_own_user %>
+      <div id='edit_profile' class='link'>
+        <a class='button_text'>edit profile</a>
+      </div>
+    <% end %>
   </div>
 </div>
 <div id='info_window'>

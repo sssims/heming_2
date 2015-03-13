@@ -1,16 +1,19 @@
 <div id='user_post_feed'>
   <% @user_blurbs.each do |blurbs| %>
-    <div id='book_blurb'>
+    <div id='book_blurb' class='blurb_container'>
       <div id='cover'>
         <img src=<%= blurbs[0] %>>
       </div>
       <hr id='dividor'>
       <div id='wrapper'>
-        <div id='content' class='blurb_text'> 
-          <%= blurbs[2] %>
+        <div id='user' class='blurb_text'>
+          <%= blurbs[3] %>
         </div>
         <div id='date' class='blurb_text'>
           <%= blurbs[5] %>
+        </div>
+        <div id='content' class='blurb_text'> 
+          <%= blurbs[2] %>
         </div>
       </div>
     </div>
