@@ -103,5 +103,10 @@ class BooksController < ApplicationController
 
     redirect_to(:controller => 'home', :action => 'index')
   end
- 
+
+  def delete_blurb
+
+
+  end 
+
 end

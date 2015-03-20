@@ -1,3 +1,9 @@
-Sandbox for hemingwire.com
+Source for hemingwire-alpha.com :
 
-Ruby on Rails application
+A Ruby on Rails web app.
+
+Project Details:
+   hemingwire is a website for book readers who wish to read and write opinions related to specific novels. The site has a narrow scope; we see this as a strength. Many social media sites pretend to be one-stop-shops for all social needs. Not us. Come to hemingwire for opinions on books, period. 
+
+To fellow developers:
+   Originally, this app was a sandbox I used to teach myself Ruby on Rails, so don't be surprised if you find flaws here and there.

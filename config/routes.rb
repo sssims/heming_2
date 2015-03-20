@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   get  'books/submit_book'
   post 'books/submit_book'
 
+  get  'books/delete_blurb'
+  post 'books/delete_blurb'
+
   get  'users/display_subpage'
   get  'users/own_show'
   post 'users/edit_about'

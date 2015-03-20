@@ -15,8 +15,18 @@
         <div id='content' class='blurb_text'> 
           <%= blurbs[2] %>
         </div>
+        <div id='delete' class='blurb_text'>
+          <a href='#' class='delete_blurb_button' id=<%= blurbs[4] %>>delete</a>
+        </div>
       </div>
     </div>
   <% end %>
 </div>
 
+<script type='text/javascript'>
+  $(document).ready( function () {
+    $(".delete_blurb_button").click( function() {
+      alert("hello world!");
+    });
+  });
+</script>
