@@ -19,7 +19,7 @@
 
 function load_post_modal() {
   $.ajax({   
-    url: "/books/",
+    url: "/books/index",
     success: function (result) {
       $("#books_ajax_target").html(result);
     }

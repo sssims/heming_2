@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
-  def get_blurbs
+  def get_blurbs(page_number=0)
 
     # How to order these
 
@@ -9,7 +9,7 @@ class HomeController < ApplicationController
     # the below is for selecting by 'credited' users
     #blurbs = Blurb.select("*").joins(:user, :book).where("users.cred = ?", true).order(updated_at: :desc)
 
-    blurbs = Blurb.select("*").joins(:user, :book).order(updated_at: :desc)
+    blurbs = Blurb.select("*").joins(:user, :book).order(updated_at: :desc).offset(page_number * 10).limit(10)
 
     temp_count = 0;
 
@@ -65,4 +65,15 @@ class HomeController < ApplicationController
 
     @blurb_array = get_blurbs
   end
+
+  def change_page
+   
+    blurb_page = Integer(params[:blurb_page])
+ 
+    @blurb_array = get_blurbs(blurb_page)
+
+    render :partial => 'blurb_feed', :layout => false
+
+  end
+
 end

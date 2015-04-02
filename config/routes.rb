@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  root 'home#index'
+
+  get 'home/change_page'
+
+  get 'users/show'
+  get 'users/new'
+
   get  'users/login'
   get  'users/logout'
 
@@ -16,6 +23,8 @@ Rails.application.routes.draw do
   get  'users/edit_photo' 
 
   post 'users/upload_photo'
+
+  get  'books/index'
 
   get  'books/get_book'
   post 'books/get_book'
@@ -39,10 +48,5 @@ Rails.application.routes.draw do
   get '/serve_image/:filename' => 'books#feed_image'
   get '/serve_user_photo/:filename' => 'users#feed_user_photo'
 
-  resources :books
-  resources :users
-  resources :home
-  
-  root 'home#index'
 
 end

@@ -18,9 +18,16 @@ body {
   position: relative;
 }
 
+.header-text {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif;
+  font-size: 11pt;
+}
+
 #feed_content {
   display: table;
   margin: auto;
+
+  width: 490px;
 }
 
 #book_blurb {

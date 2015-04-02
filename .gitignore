@@ -21,3 +21,6 @@ config/database.yml
 #ignore user content
 content/covers/*.jpeg
 content/user_photos/*.jpeg
+
+#ignore to do list
+TODO

@@ -20,8 +20,29 @@
 #feed_window > #feed_content {
 }
 
-/*
-body {
-  background: #F2F2F2;
+/* blurb page navigation */
+
+#blurb_navigation {
+  display: table;
+  margin: auto;
+
+  width: 490px;
 }
-*/
+
+#blurb_navigation > #next {
+  float: right;
+
+  cursor: pointer;
+  cursor: hand;
+}
+
+#blurb_navigation > #prev {
+  float: left;
+
+  cursor: pointer;
+  cursor: hand;
+}
+
+#footer {
+  height: 100px;
+}
