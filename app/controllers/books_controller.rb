@@ -20,11 +20,17 @@ class BooksController < ApplicationController
     search = params[:book_search_field]
 
 
-    @books = GoogleBooks.search(search, {:count => 5})
+    @books = GoogleBooks.search(search, {:count => 8})
 
     i = 0;
     @titles = []
     @books.each do |book|
+
+       if book.title == ""
+         @books.delete_at(i)
+         next
+       end
+
        @titles[i] = book.title.tr(" ", "-") 
        #@titles[i] = book.title.tr(",", "")
        i += 1

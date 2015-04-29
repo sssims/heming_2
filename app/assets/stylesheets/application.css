@@ -125,7 +125,7 @@ body {
   margin: 5px;
 }
 
-.user_summary > #name {
+.user_summary > .name {
   display: table;
   margin: auto;
 

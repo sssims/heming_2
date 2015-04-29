@@ -29,6 +29,10 @@ $('.book_image').click( function() {
 
   // ajax request to action that renders partial with form.
 
+  if($(this).attr('title') == "") {
+    alert('this one');
+  }
+
   var book_info = { 
     'isbn' : $(this).attr('id'), 
     'img' : $(this).find('img').attr('title'), 
