@@ -99,7 +99,7 @@ class UsersController < ApplicationController
     case params[:button_id]    
     when 'posts'
       @user_blurbs = []
-      blurbs = Blurb.select("*").joins(:user, :book).where(user_id: params[:view_user])
+      blurbs = Blurb.select("*").joins(:user, :book).where(user_id: params[:view_user]).order(updated_at: :desc)
       blurbs.each do |blurb|
         one_blurb = []
         one_blurb.push(blurb.thumb_path)

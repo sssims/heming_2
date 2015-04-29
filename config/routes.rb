@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get  'users/login'
   get  'users/logout'
 
+  get  'users/create'
+
   post 'users/search'
 
   get  'users/login_attempt'
