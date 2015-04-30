@@ -4,11 +4,6 @@ Rails.application.routes.draw do
 
   get 'home/change_page'
 
-  get  'users/follow_show' # THIS IS FOR TESTING. REMOVE FOR PRODUCTION
-  get  'users/blurbs_show' # THIS IS FOR TESTING. REMOVE FOR PRODUCTION
-  get  'users/users_show' # THIS IS FOR TESTING. REMOVE FOR PRODUCTION
-  get 'books/test_error' # TESTING. REMOVE FOR PRODUCTION
-
   resources :users do
     collection do
 
@@ -34,7 +29,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :books do
+  get 'books/index'
+ 
+  resources :books, :only => [:index] do
     collection do
 
       get :get_book
@@ -54,6 +51,11 @@ Rails.application.routes.draw do
 
     end
   end
+
+  get  'users/follow_show' # THIS IS FOR TESTING. REMOVE FOR PRODUCTION
+  get  'users/blurbs_show' # THIS IS FOR TESTING. REMOVE FOR PRODUCTION
+  get  'users/users_show' # THIS IS FOR TESTING. REMOVE FOR PRODUCTION
+  get 'books/test_error' # TESTING. REMOVE FOR PRODUCTION
 
   get '/serve_image/:filename' => 'books#feed_image'
   get '/serve_user_photo/:filename' => 'users#feed_user_photo'

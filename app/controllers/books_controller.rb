@@ -71,6 +71,7 @@ class BooksController < ApplicationController
 
     isbn = params[:isbn]
 
+=begin
     if !isbn.is_a?(String)
       @error = "isbn is not a string"
       #invalid
@@ -85,6 +86,7 @@ class BooksController < ApplicationController
     end 
     
     return
+=end
 
     if !Book.exists?(:title => params[:title])
       new_book = Book.new 
@@ -141,5 +143,6 @@ class BooksController < ApplicationController
 
 
   end 
+
 
 end
