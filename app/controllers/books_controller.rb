@@ -66,17 +66,39 @@ class BooksController < ApplicationController
   end
 
   def submit_book
+
+    # check for valid title and isbn.
+
+    isbn = params[:isbn]
+
+    if !isbn.is_a?(String)
+      @error = "isbn is not a string"
+      #invalid
+      render :partial => 'test_error', :layout => false
+    elsif !isbn =~ /^\d+$/
+      @error = "isbn is not made of integers onry"
+      #invalid
+      render :partial => 'test_error', :layout => false
+    else
+      @error = "no errors"
+      render :partial => 'test_error', :layout => false
+    end 
+    
+    return
+
     if !Book.exists?(:title => params[:title])
       new_book = Book.new 
       new_book.title = params[:title]
-      new_book.isbn  = params[:isbn]
+      new_book.isbn  = isbn
 
-      full_name = params[:isbn] + '_00_full'
+      full_name = isbn + '_00_full'
       full_path = Rails.root.to_s + '/content/covers/' + full_name + '.jpeg'
 
-      thumb_name = params[:isbn] + '_00_thumb'
+      thumb_name = isbn + '_00_thumb'
       thumb_path = Rails.root.to_s + '/content/covers/' + thumb_name + '.jpeg'
 
+      # does this work?
+ 
       begin
         img_from_url = open(session[:selected_img])
         open(full_path, 'wb') do |file|      
@@ -85,6 +107,8 @@ class BooksController < ApplicationController
       rescue OpenURI::HTTPError
         full_name = 'unavailable_full'
       end
+
+      # ------- 
 
       open(thumb_path, 'wb') do |file|      
         file << open(session[:selected_thumb]).read
@@ -97,6 +121,8 @@ class BooksController < ApplicationController
       new_book.thumb_path = '/serve_image/' + thumb_name + '.jpeg' 
 
       new_book.save
+
+
     end
   
     blurb_book = Book.find_by_title(params[:title])
@@ -108,6 +134,7 @@ class BooksController < ApplicationController
     new_blurb.save
 
     redirect_to(:controller => 'home', :action => 'index')
+
   end
 
   def delete_blurb

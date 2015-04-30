@@ -4,51 +4,58 @@ Rails.application.routes.draw do
 
   get 'home/change_page'
 
-  get 'users/show'
-  get 'users/new'
-
-  get  'users/login'
-  get  'users/logout'
-
-  get  'users/create'
-
-  post 'users/search'
-
-  get  'users/login_attempt'
-  post 'users/login_attempt'
-
-  get  'users/new_follow'
-  get  'users/unfollow'
   get  'users/follow_show' # THIS IS FOR TESTING. REMOVE FOR PRODUCTION
   get  'users/blurbs_show' # THIS IS FOR TESTING. REMOVE FOR PRODUCTION
   get  'users/users_show' # THIS IS FOR TESTING. REMOVE FOR PRODUCTION
-  get  'users/edit_photo' 
+  get 'books/test_error' # TESTING. REMOVE FOR PRODUCTION
 
-  post 'users/upload_photo'
+  resources :users do
+    collection do
 
-  get  'books/index'
+      get :login
+      get :logout
+      get :login_attempt
+      post :login_attempt
+   
+      post :search
 
-  get  'books/get_book'
-  post 'books/get_book'
+      get :display_subpage
 
-  get  'books/get_book_live'
-  post 'books/get_book_live'
+      get :own_show
 
-  get  'books/select_book'
-  post 'books/select_book'
+      get :new_follow
+      get :unfollow
 
-  get  'books/submit_book'
-  post 'books/submit_book'
+      get :edit_photo
 
-  get  'books/delete_blurb'
-  post 'books/delete_blurb'
+      post :edit_about
+      post :upload_photo
+     
+    end
+  end
 
-  get  'users/display_subpage'
-  get  'users/own_show'
-  post 'users/edit_about'
+  resources :books do
+    collection do
+
+      get :get_book
+      post :get_book
+
+      get :get_book_live
+      post :get_book_live
+
+      get :select_book
+      post :select_book
+
+      get :submit_book
+      post :submit_book
+  
+      get :delete_blurb
+      post :delete_blurb
+
+    end
+  end
 
   get '/serve_image/:filename' => 'books#feed_image'
   get '/serve_user_photo/:filename' => 'users#feed_user_photo'
-
 
 end
