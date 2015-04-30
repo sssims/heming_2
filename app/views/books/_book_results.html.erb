@@ -1,4 +1,7 @@
 <div id="book_scroll_container">
+  <div>
+    <a><%= @error %></a>
+  </div>
   <!--<div id="books_scroll_left">
     <div>
       A
@@ -6,9 +9,9 @@
   </div>-->
   <div id="book_results_window">
     <% i = 0 %>
-    <% @books.each do |book| %>
-      <span class='book_image' id=<%= book.isbn %> title=<%= @titles[i] %>>
-        <img src=<%= book.image_link(:zoom => 1) %> title=<%= book.image_link(:zoom => 4) %>> 
+    <% @books_content.each do |book| %>
+      <span class='book_image' id=<%= book[0]%> title=<%= book[1]%>>
+        <img src=<%= book[2]%> title=<%= book[3]%>> 
       </span>
       <% i += 1 %>
     <% end %>
@@ -28,10 +31,6 @@ $('.book_image').click( function() {
   $(this).addClass('selected');
 
   // ajax request to action that renders partial with form.
-
-  if($(this).attr('title') == "") {
-    alert('this one');
-  }
 
   var book_info = { 
     'isbn' : $(this).attr('id'), 

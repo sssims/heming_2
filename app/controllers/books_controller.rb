@@ -12,30 +12,31 @@ class BooksController < ApplicationController
   def get_book
     @count = 0
     book_title = params[:book_search_field]
-    @books = GoogleBooks.search(book_title, {:count => 10})
+    @books = GoogleBooks.search(book_title, {:count => 15})
+
     @books = @books.first(10)
   end 
   
   def get_book_live
+
     search = params[:book_search_field]
 
+    @books = GoogleBooks.search(search, {:count => 12}).to_a
 
-    @books = GoogleBooks.search(search, {:count => 8})
+    @books_content =[]
 
-    i = 0;
-    @titles = []
     @books.each do |book|
 
-       if book.title == ""
-         @books.delete_at(i)
+       if book.title.nil? or book.title == "" or book.isbn.nil? or book.isbn == ""
+         #@books.delete_at(i)
          next
        end
 
-       @titles[i] = book.title.tr(" ", "-") 
-       #@titles[i] = book.title.tr(",", "")
-       i += 1
-    end
+       this_book = [book.isbn, book.title.tr(" ", "-"), book.image_link(:zoom => 1), book.image_link(:zoom => 4)]
 
+       @books_content.push(this_book)
+
+    end
 
    # Rails.cache.write('selected_books', books_hash)
 
@@ -70,27 +71,11 @@ class BooksController < ApplicationController
     # check for valid title and isbn.
 
     isbn = params[:isbn]
+    title = params[:title]
 
-=begin
-    if !isbn.is_a?(String)
-      @error = "isbn is not a string"
-      #invalid
-      render :partial => 'test_error', :layout => false
-    elsif !isbn =~ /^\d+$/
-      @error = "isbn is not made of integers onry"
-      #invalid
-      render :partial => 'test_error', :layout => false
-    else
-      @error = "no errors"
-      render :partial => 'test_error', :layout => false
-    end 
-    
-    return
-=end
-
-    if !Book.exists?(:title => params[:title])
+    if !Book.exists?(:title => title) and !Book.exists?(:isbn => isbn)
       new_book = Book.new 
-      new_book.title = params[:title]
+      new_book.title = title
       new_book.isbn  = isbn
 
       full_name = isbn + '_00_full'
@@ -123,12 +108,19 @@ class BooksController < ApplicationController
       new_book.thumb_path = '/serve_image/' + thumb_name + '.jpeg' 
 
       new_book.save
-
-
-    end
-  
-    blurb_book = Book.find_by_title(params[:title])
  
+    end
+ 
+    blurb_book = Book.find_by_isbn(isbn)
+
+    #if blurb_book.nil?
+    #  blurb_book = Book.find_by_title(title)
+    #end
+
+    #if blurb_book.nil?
+    #  #ERROR. TODO: Make a subpage saying there's an error. OR => make it so books Always have a proper ISBN.
+    #end
+
     new_blurb = Blurb.new
     new_blurb.content = params[:blurb_form_field]
     new_blurb.user_id = session[:user_id]
