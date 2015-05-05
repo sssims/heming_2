@@ -42,6 +42,7 @@ class HomeController < ApplicationController
   end
 
   def index
+
 =begin
     Book.select("*").each do |book|
       if book.image_path == nil or book.image_path == '/serve_image/unavailable_full.jpeg'
@@ -64,6 +65,7 @@ class HomeController < ApplicationController
 =end
 
     @blurb_array = get_blurbs
+
   end
 
   def change_page

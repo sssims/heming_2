@@ -26,7 +26,12 @@
 <script type='text/javascript'>
   $(document).ready( function () {
     $(".delete_blurb_button").click( function() {
-      alert("hello world!");
+      $.ajax({
+        type: "POST", 
+        url: "/users/delete_blurb",
+        data: { 'blurb_id' : $(this).attr('id') }
+      });  
+      $(this).parent().parent().parent().css("visibility", "hidden");
     });
   });
 </script>

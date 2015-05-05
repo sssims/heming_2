@@ -4,19 +4,27 @@
 
 var blurb_page = 0;
 
+function blurb_feed_change_page(page) {
+
+  $.ajax({
+    url: "/home/change_page",
+    data: { 'blurb_page' : page },
+    success: function (result) {
+      $("#feed_content").html(result);
+    }
+  });
+  
+  return;
+}
+
+
 $(document).on("click", "#blurb_navigation > #prev", function() {
 
   if (blurb_page > 0) {
     blurb_page--;
   }
 
-  $.ajax({
-    url: "/home/change_page",
-    data: { 'blurb_page' : blurb_page },
-    success: function (result) {
-      $("#feed_content").html(result);
-    }
-  });
+  blurb_feed_change_page(blurb_page);
 
 });
 
@@ -24,13 +32,7 @@ $(document).on("click", "#blurb_navigation > #next", function() {
 
   blurb_page++;
 
-  $.ajax({
-    url: "/home/change_page",
-    data: { 'blurb_page' : blurb_page },
-    success: function (result) {
-      $("#feed_content").html(result);
-    }
-  });
+  blurb_feed_change_page(blurb_page);
 
 });
 

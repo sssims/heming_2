@@ -26,11 +26,13 @@
   display: table;
   margin: auto;
 
-  width: 250px;
+  width: 440px;
 }
 
 #blurb_navigation > #next {
-  float: right;
+  margin: 0 5px 0 69px;
+
+  float: left;
 
   cursor: pointer;
   cursor: hand;

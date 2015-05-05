@@ -99,7 +99,8 @@ class UsersController < ApplicationController
     case params[:button_id]    
     when 'posts'
       @user_blurbs = []
-      blurbs = Blurb.select("*").joins(:user, :book).where(user_id: params[:view_user]).order(updated_at: :desc)
+      blurbs = Blurb.select("*, blurbs.id as blurb_id").joins(:user, :book).where(user_id: params[:view_user]).order(updated_at: :desc)
+  
       blurbs.each do |blurb|
         one_blurb = []
         one_blurb.push(blurb.thumb_path)
@@ -110,7 +111,7 @@ class UsersController < ApplicationController
           one_blurb.push(blurb.content)
         end
         one_blurb.push(blurb.fullname.titleize)
-        one_blurb.push(blurb.id)
+        one_blurb.push(blurb.blurb_id)
         one_blurb.push(blurb.created_at.strftime("%B %-d, %Y"))
         @user_blurbs.push(one_blurb)
       end
@@ -185,4 +186,13 @@ class UsersController < ApplicationController
   
     redirect_to :action => 'show', :id => session[:user_id]
   end
+ 
+  def delete_blurb
+
+    Blurb.destroy(params[:blurb_id])
+ 
+    render :nothing => true
+  
+  end
+
 end

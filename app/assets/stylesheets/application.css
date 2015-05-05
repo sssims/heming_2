@@ -18,6 +18,10 @@ body {
   position: relative;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 .header-text {
   font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif;
   font-size: 11pt;
@@ -109,6 +113,9 @@ body {
 
   /* font-family: "minion-pro", times, serif; */
   /* font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif; */
+}
+
+#book_blurb > #wrapper > #book-info {
 }
 
 .blurb_text {

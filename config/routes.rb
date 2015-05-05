@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       post :edit_about
       post :upload_photo
      
+      post :delete_blurb
+
     end
   end
 
