@@ -27,6 +27,9 @@
     <% end %>
   </div>
 </div>
+<div id='top-buffer'>
+   <!-- Has same height as nav bar but is 'in the flow' so It leaves space at the top of every page-->
+</div>
 
 <style>
 
@@ -101,7 +104,15 @@
 }
 
 #nav_container {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
   height: 34px;
+
+  z-index: 9999;
 
   /* IMPROVE */
 
@@ -112,6 +123,10 @@
   background: #FFFFFF;
 
   margin: 0px;
+}
+
+#top-buffer {
+  height: 64px;
 }
 
 </style>
