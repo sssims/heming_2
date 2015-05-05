@@ -71,32 +71,6 @@ body {
   border-color: #CCCCCC; */
 }
 
-#book_blurb > #wrapper > #user > a{
-  /*
-  font-family: "Courier New", Courier, monospace;
-  letter-spacing: -1px;
-  color: #0037A1;
-  */
-
-  color: #000000;
-
-  /*font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif;*/
-  font-family: "minion-pro", times, serif;
-
-  font-weight: bold;
-  letter-spacing: 0px;
-
-  font-size: 12pt;
-  text-decoration: none;
-}
-
-#book_blurb > #wrapper > #content {
-
-  /* font-family: "minion-pro", times, serif; */
-  /* font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif; */
-  letter-spacing: -0.5px;
-}
-
 #book_blurb > #dividor {
   margin: 5px 0px 5px 0px;
   height: 1px;
@@ -104,15 +78,43 @@ body {
   border: none;
 }
 
+#book_blurb > #wrapper > #user {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: -1px;
+}
+
+#book_blurb > #wrapper > #user > a{
+  font-family: "Courier New", Courier, monospace;
+  
+  color: #000000;
+
+  /*font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif;*/
+
+  /*font-family: "minion-pro", times, serif;*/
+
+  font-weight: bold;
+ /* letter-spacing: 0px;
+
+  font-size: 12pt; */
+  text-decoration: none;
+}
+
 #book_blurb > #wrapper > #date {
   color: gray;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
+}
+
+#book_blurb > #wrapper > #content {
+
+  /* font-family: "minion-pro", times, serif; */
+  /* font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif; */
 }
 
 .blurb_text {
   /*font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;*/
   font-family: "Courier", Courier, monospace;
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
   font-size: 10pt;
 }
 
