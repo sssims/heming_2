@@ -27,7 +27,7 @@ class BooksController < ApplicationController
 
     @books.each do |book|
 
-       if book.title.nil? or book.title == "" or book.isbn.nil? or book.isbn == ""
+       if book.title.nil? or book.title == "" or book.isbn.nil? or book.isbn == "" or book.image_link.nil? or book.image_link == ""
          #@books.delete_at(i)
          next
        end
