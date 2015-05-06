@@ -48,4 +48,21 @@ $(document).on("click", "#post_book_link", function() {
   $("#book_search_field").focus();
 });
 
+$(document).on("click", ".info-switch", function() {
+
+  var wrapper = $(this).parent().parent().children("#wrapper");
+
+  var content = wrapper.children("#content");
+  var bookinf = wrapper.children("#book-info");
+
+  if(bookinf.hasClass("hidden")) {
+    bookinf.removeClass("hidden");
+    content.addClass("hidden");
+  } else {
+    bookinf.addClass("hidden");
+    content.removeClass("hidden");
+  }
+
+});
+
 /* END SECTION posting modal dialog box */

@@ -37,3 +37,9 @@ $(document).on("click", "#post_close_button > #icon", function() {
      $("#overlay").css("visibility", "hidden");
 });
 
+/*
+$(document).on("click", ".info-switch", function() {
+     $(this).parent().parent().children("#wrapper > #book-info").removeClass("hidden");
+});
+*/
+

@@ -19,7 +19,7 @@ body {
 }
 
 .hidden {
-  visibility: hidden;
+  display: none;
 }
 
 .header-text {
@@ -110,7 +110,6 @@ body {
 }
 
 #book_blurb > #wrapper > #content {
-
   /* font-family: "minion-pro", times, serif; */
   /* font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif; */
 }

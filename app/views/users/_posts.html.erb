@@ -2,7 +2,7 @@
   <% @user_blurbs.each do |blurbs| %>
     <div id='book_blurb' class='blurb_container'>
       <div id='cover'>
-        <img src=<%= blurbs[0] %>>
+        <img src=<%= blurbs[0] %> class='info-switch'>
       </div>
       <hr id='dividor'>
       <div id='wrapper'>
@@ -14,6 +14,9 @@
         </div>
         <div id='content' class='blurb_text'> 
           <%= blurbs[2] %>
+        </div>
+        <div id='book-info' class='hidden blurb_text'>
+          <%= blurbs[1] %>
         </div>
         <div id='delete' class='blurb_text'>
           <a href='#' class='delete_blurb_button' id=<%= blurbs[4] %>>delete</a>
@@ -31,7 +34,7 @@
         url: "/users/delete_blurb",
         data: { 'blurb_id' : $(this).attr('id') }
       });  
-      $(this).parent().parent().parent().css("visibility", "hidden");
+      $(this).parent().parent().parent().addClass("hidden");
     });
   });
 </script>

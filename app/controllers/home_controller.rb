@@ -17,13 +17,7 @@ class HomeController < ApplicationController
       blurb_content = []
       blurb_content.push(blurb.thumb_path)
 
-      if blurb.title.length > 28
-        trunc_title = blurb.title[0..28] + '...'
-
-        blurb_content.push(trunc_title.tr("-", " "))
-      else
-        blurb_content.push(blurb.title.tr("-", " "))
-      end
+      blurb_content.push(blurb.title.tr("-", " "))
 
       if !blurb.content?
         # for designing views. CHANGE FOR DEPLOYMENT

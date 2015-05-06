@@ -104,7 +104,7 @@ class UsersController < ApplicationController
       blurbs.each do |blurb|
         one_blurb = []
         one_blurb.push(blurb.thumb_path)
-        one_blurb.push(blurb.title)
+        one_blurb.push(blurb.title.tr("-", " "))
         if !blurb.content?
           one_blurb.push("<blank>")
         else
