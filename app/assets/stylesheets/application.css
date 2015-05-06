@@ -144,7 +144,7 @@ body {
 
 #overlay {
   visibility: hidden;
-  position: absolute;
+  position: fixed;
 
   left: 0px;
   top: 0px;
