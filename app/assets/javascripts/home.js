@@ -4,7 +4,7 @@
 
 var blurb_page = 0;
 
-function blurb_feed_change_page(page) {
+function blurb_feed_change_page_static(page) {
 
   $.ajax({
     url: "/home/change_page",
@@ -17,14 +17,29 @@ function blurb_feed_change_page(page) {
   return;
 }
 
+function blurb_feed_change_page_dynamic(page) {
 
+  $.ajax({
+    url: "/home/change_page",
+    data: { 'blurb_page' : page },
+    success: function (result) {
+      $("#endless-page-" + page).html(result);
+    }
+  });
+  
+  return;
+
+}
+
+// changed from 'next', 'previous' buttons to infinite scrolling. 'prev' functionality depreciated.
+/*
 $(document).on("click", "#blurb_navigation > #prev", function() {
 
   if (blurb_page > 0) {
     blurb_page--;
   }
 
-  blurb_feed_change_page(blurb_page);
+  blurb_feed_change_page_dynamic(blurb_page);
 
 });
 
@@ -32,10 +47,18 @@ $(document).on("click", "#blurb_navigation > #next", function() {
 
   blurb_page++;
 
-  blurb_feed_change_page(blurb_page);
+  blurb_feed_change_page_dynamic(blurb_page);
 
 });
+*/
 
+$(document).on("click", "#blurb_navigation > #more", function() {
+
+  blurb_page++;
+
+  blurb_feed_change_page_dynamic(blurb_page);
+
+});
 
 /*
 $(document).ready( function() {

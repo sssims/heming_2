@@ -29,6 +29,13 @@
   width: 440px;
 }
 
+#blurb_navigation > #more {
+  float: left;
+
+  cursor: pointer;
+  cursor: hand;
+}
+
 #blurb_navigation > #next {
   margin: 0 5px 0 69px;
 

@@ -64,9 +64,9 @@ class HomeController < ApplicationController
 
   def change_page
    
-    blurb_page = Integer(params[:blurb_page])
+    @blurb_page = Integer(params[:blurb_page])
  
-    @blurb_array = get_blurbs(blurb_page)
+    @blurb_array = get_blurbs(@blurb_page)
 
     render :partial => 'blurb_feed', :layout => false
 
