@@ -18,9 +18,11 @@
         <div id='book-info' class='hidden blurb_text'>
           <%= blurbs[1] %>
         </div>
-        <div id='delete' class='blurb_text'>
-          <a href='#' class='delete_blurb_button' id=<%= blurbs[4] %>>delete</a>
-        </div>
+        <% if @is_own_user %>
+          <div id='delete' class='blurb_text'>
+            <a href='#' class='delete_blurb_button' id=<%= blurbs[4] %>>delete</a>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>
