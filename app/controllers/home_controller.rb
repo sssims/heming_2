@@ -33,6 +33,7 @@ class HomeController < ApplicationController
     end
 
     return blurb_array
+
   end
 
   def index
@@ -68,7 +69,7 @@ class HomeController < ApplicationController
  
     @blurb_array = get_blurbs(@blurb_page)
 
-    render :partial => 'blurb_feed', :layout => false
+    render :partial => 'blurb_feed'
 
   end
 
