@@ -125,9 +125,13 @@ class BooksController < ApplicationController
     new_blurb.content = params[:blurb_form_field]
     new_blurb.user_id = session[:user_id]
     new_blurb.book_id = blurb_book.id
-    new_blurb.save
 
-    redirect_to(:controller => 'home', :action => 'index')
+    if new_blurb.save
+      redirect_to(:controller => 'home', :action => 'index')
+    else 
+      # TODO: Change this to handle errors. Now, it redirects to home page as if there were no error.
+      redirect_to(:controller => 'home', :action => 'index')
+    end
 
   end
 

@@ -39,12 +39,15 @@ $(document).on("page:load", function() {
 $(document).keyup(function (e) {
   if(e.keyCode == 27) {
     $("#overlay").css("visibility", "hidden");
+    $("body").removeClass("no-overflow");
   }
 });
 
 $(document).on("click", "#post_book_link", function() {
   el = document.getElementById("overlay");
-  el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+  el.style.visibility = "visible";
+  //$("body").addClass("no-overflow");
+  $("body").addClass("no-overflow");
   $("#book_search_field").focus();
 });
 

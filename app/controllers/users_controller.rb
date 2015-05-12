@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     @no_nav_bar = true
     render "new" 
   end
+
   def user_params
     params.require(:user).permit(:username, :email, :password, :enc_pword, :fullname, :salt)
   end
