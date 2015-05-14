@@ -30,6 +30,10 @@ textarea {
   overflow: hidden;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .header-text {
   font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif;
   font-size: 11pt;
@@ -99,8 +103,6 @@ textarea {
 }
 
 #book_blurb > #wrapper > #user > a{
-  font-family: "Courier New", Courier, monospace;
-  
   color: #000000;
 
   /*font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif;*/
@@ -129,8 +131,7 @@ textarea {
 
 .blurb_text {
   /*font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;*/
-  font-family: "Courier", Courier, monospace;
-  letter-spacing: -0.5px;
+  font-family: "Courier New", Courier, monospace;
   font-size: 10pt;
 }
 

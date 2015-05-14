@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141016235217) do
+ActiveRecord::Schema.define(version: 20150514225732) do
 
-  create_table "blurbs", force: true do |t|
+  create_table "blurbs", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "book_id"
     t.text     "content"
@@ -21,20 +21,21 @@ ActiveRecord::Schema.define(version: 20141016235217) do
     t.datetime "updated_at"
   end
 
-  create_table "books", force: true do |t|
-    t.string   "title"
-    t.string   "author"
-    t.string   "publisher"
-    t.string   "published_date"
-    t.string   "isbn"
-    t.string   "language"
-    t.string   "image_path"
+  create_table "books", force: :cascade do |t|
+    t.string   "title",          limit: 255
+    t.string   "author",         limit: 255
+    t.string   "publisher",      limit: 255
+    t.string   "published_date", limit: 255
+    t.string   "isbn",           limit: 255
+    t.string   "language",       limit: 255
+    t.string   "image_path",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "thumb_path"
+    t.string   "thumb_path",     limit: 255
+    t.string   "buy_link"
   end
 
-  create_table "relationships", force: true do |t|
+  create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
     t.datetime "created_at"
@@ -45,16 +46,16 @@ ActiveRecord::Schema.define(version: 20141016235217) do
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
-  create_table "users", force: true do |t|
-    t.string   "username"
-    t.string   "fullname"
-    t.string   "email"
-    t.string   "enc_pword"
-    t.string   "salt"
+  create_table "users", force: :cascade do |t|
+    t.string   "username",   limit: 255
+    t.string   "fullname",   limit: 255
+    t.string   "email",      limit: 255
+    t.string   "enc_pword",  limit: 255
+    t.string   "salt",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "about"
-    t.string   "photo_link"
+    t.string   "photo_link", limit: 255
     t.boolean  "cred"
   end
 

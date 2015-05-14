@@ -4,9 +4,8 @@
       <div id='cover'>
         <img src=<%= blurbs[0] %> class='info-switch'>
       </div>
-      <hr id='dividor'>
       <div id='wrapper'>
-        <div id='user' class='blurb_text'>
+        <div id='user' class='blurb_text bold'>
           <%= blurbs[3] %>
         </div>
         <div id='date' class='blurb_text'>
@@ -36,7 +35,7 @@
         url: "/users/delete_blurb",
         data: { 'blurb_id' : $(this).attr('id') }
       });  
-      $(this).parent().parent().parent().addClass("hidden");
+      $(this).parent().parent().parent().css("display", "none");
     });
   });
 </script>
