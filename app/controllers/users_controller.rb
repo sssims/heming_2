@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @no_nav_bar = true
     @user = User.new
   end
+
   def create
     @user = User.new(user_params)
     @user.cred = false

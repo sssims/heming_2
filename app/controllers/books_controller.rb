@@ -72,7 +72,8 @@ class BooksController < ApplicationController
     isbn = params[:isbn]
     title = params[:title]
 
-    if !Book.exists?(:title => title) and !Book.exists?(:isbn => isbn)
+    #if !Book.exists?(:title => title) and !Book.exists?(:isbn => isbn)
+    if !Book.exists?(:isbn => isbn)
       new_book = Book.new 
       new_book.title = title
       new_book.isbn  = isbn

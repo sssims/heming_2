@@ -35,7 +35,7 @@ $(document).ready( function() {
 
 $(document).on("click", "#post_close_button > #icon", function() { 
      $("#overlay").css("visibility", "hidden");
-     $("body").removeClass("no-overflow");
+     //$("body").removeClass("no-overflow");
 });
 
 /*
