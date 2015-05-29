@@ -18,6 +18,9 @@
 #ignore database
 config/database.yml
 
+#ignore secrets
+config/secrets.yml
+
 #ignore user content
 content/covers/*.jpeg
 content/user_photos/*.jpeg
