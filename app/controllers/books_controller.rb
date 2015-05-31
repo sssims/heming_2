@@ -7,17 +7,8 @@ class BooksController < ApplicationController
     render :partial => 'index_partial', :layout => false
 
   end
-
-  # if javascript is disabled on client browser navigate to new page.
-  def get_book
-    @count = 0
-    book_title = params[:book_search_field]
-    @books = GoogleBooks.search(book_title, {:count => 15})
-
-    @books = @books.first(10)
-  end 
   
-  def get_book_live
+  def get_books
 
     search = params[:book_search_field]
 
@@ -37,9 +28,8 @@ class BooksController < ApplicationController
 
     end
 
-   # Rails.cache.write('selected_books', books_hash)
-
     render :partial => 'book_results', :layout => false
+
   end
 
   def select_book
@@ -47,15 +37,15 @@ class BooksController < ApplicationController
     session[:selected_img] = params[:img]
     session[:selected_thumb] = params[:thumb]
 
-    # USING Hidden Params
-     
     @b_title = params[:title]
     @b_isbn =  params[:isbn]
 
     render :partial => 'blurb_form', :layout => false
+
   end
 
   def feed_image
+
     path = Rails.root.to_s + "/content/covers/#{params[:filename]}" + '.jpeg'
 
     send_file( path,
@@ -66,8 +56,6 @@ class BooksController < ApplicationController
   end
 
   def submit_book
-
-    # check for valid title and isbn.
 
     isbn = params[:isbn]
     title = params[:title]
@@ -84,8 +72,6 @@ class BooksController < ApplicationController
       thumb_name = isbn + '_00_thumb'
       thumb_path = Rails.root.to_s + '/content/covers/' + thumb_name + '.jpeg'
 
-      # does this work?
- 
       begin
         img_from_url = open(session[:selected_img])
         open(full_path, 'wb') do |file|      
@@ -94,8 +80,6 @@ class BooksController < ApplicationController
       rescue OpenURI::HTTPError
         full_name = 'unavailable_full'
       end
-
-      # ------- 
 
       open(thumb_path, 'wb') do |file|      
         file << open(session[:selected_thumb]).read

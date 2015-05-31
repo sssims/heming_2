@@ -16,4 +16,6 @@
       <%= f.submit :Signup, class: 'sign_submit' %>
     <% end %>
 </div>
-
+<div id='login-link'>
+  <a>Already a member? <%= link_to "Login", :controller => 'users', :action => 'login' %></a>
+</div>

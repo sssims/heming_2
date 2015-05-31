@@ -2,8 +2,6 @@ class HomeController < ApplicationController
 
   def get_blurbs(page_number=0)
 
-    # How to order these
-
     blurb_array = []
 
     # the below is for selecting by 'credited' users
@@ -11,25 +9,23 @@ class HomeController < ApplicationController
 
     blurbs = Blurb.select("*").joins(:user, :book).order(updated_at: :desc).offset(page_number * 10).limit(10)
 
-    temp_count = 0;
-
     blurbs.each do |blurb|
+
       blurb_content = []
+
+      # get content to be displayed from DOM
+      # using an array is error prone (must keep track of index of each content)
+      # possible improvement -> Put blurb content in an object instead of array 
+
       blurb_content.push(blurb.thumb_path)
-
       blurb_content.push(blurb.title.tr("-", " "))
-
-      if !blurb.content?
-        # for designing views. CHANGE FOR DEPLOYMENT
-        blurb_content.push("<blank blurb>")
-      else
-        blurb_content.push(blurb.content)
-      end
-      # REMOVE TITLEIZE FOR DEPLOYMENT
+      blurb_content.push(blurb.content)
       blurb_content.push(blurb.fullname.titleize)
       blurb_content.push(blurb.user_id)
       blurb_content.push(blurb.created_at.strftime("%B %-d, %Y"))
+
       blurb_array.push(blurb_content)
+
     end
 
     return blurb_array
@@ -38,28 +34,7 @@ class HomeController < ApplicationController
 
   def index
 
-=begin
-    Book.select("*").each do |book|
-      if book.image_path == nil or book.image_path == '/serve_image/unavailable_full.jpeg'
-        thumb_path = Rails.root.to_s + '/content/covers/' + book.isbn.to_s + '_00_thumb.jpeg'
-     
-        cover = Magick::Image.read(thumb_path).first
-        cover = cover.resize_to_fit(210, 420)
-        cover.write(thumb_path)
-      else
-        large_path = Rails.root.to_s + '/content/covers/' + book.isbn.to_s + '_00_full.jpeg'
-        new_path = Rails.root.to_s + '/content/covers/' + book.isbn.to_s + '_00_thumb.jpeg'
-
-        cover = Magick::Image.read(large_path).first
-        cover = cover.resize_to_fit(210, 420)
-        cover.write(new_path)
-      end
-    end
-   
-    uncomment ro resize all images
-=end
-
-    @blurb_array = get_blurbs
+    @blurb_array = get_blurbs(0)
 
   end
 
@@ -69,7 +44,7 @@ class HomeController < ApplicationController
  
     @blurb_array = get_blurbs(@blurb_page)
 
-    render :partial => 'blurb_feed'
+    render :partial => 'blurb_feed', :layout => false
 
   end
 

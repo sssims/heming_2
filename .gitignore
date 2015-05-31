@@ -25,5 +25,8 @@ config/secrets.yml
 content/covers/*.jpeg
 content/user_photos/*.jpeg
 
+#ignore auxilary code
+aux/
+
 #ignore to do list
 TODO

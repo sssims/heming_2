@@ -8,7 +8,7 @@
     <%= password_field_tag :login_password, nil, placeholder: 'Password', class: 'sign_form' %>
     <input class='sign_submit' name='commit' type='submit' value='Log In' />
  <% end %>
- <div id='signup_text'>
+ <div id='signup-link'>
    <p>Don't have an account? <%= link_to "Sign Up", :controller => 'users', :action => 'new' %></p>
  </div>
 </div>

@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
-  root 'home#index'
+  root 'welcome#index'
 
+  get 'home/index'
+  post 'home/change_page'
   get 'home/change_page'
+
+  get 'welcome/index'
+  get 'welcome/sign_up'
 
   resources :users do
     collection do
@@ -39,8 +44,8 @@ Rails.application.routes.draw do
       get :get_book
       post :get_book
 
-      get :get_book_live
-      post :get_book_live
+      get :get_books
+      post :get_books
 
       get :select_book
       post :select_book

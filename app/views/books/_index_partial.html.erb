@@ -2,11 +2,11 @@
 <div id="post_close_button">
   <a id="icon">x</a>
 </div>
-<div id="post_page_title">
+<div id="post_page_title" class='page-title-text'>
    <a>POST</a>
 </div>
 <div id="post_form_div">
-  <%= form_tag :action => 'get_book', :id => 'book_form' do %>
+  <%= form_tag :action => 'get_books', :id => 'book_form' do %>
     <%= text_field_tag :book_search_field, nil, :autocomplete => 'off', placeholder: "title or author" %>
   <% end %>
 </div>

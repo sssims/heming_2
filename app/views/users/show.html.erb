@@ -123,31 +123,7 @@
 </style>
 
 <script type='text/javascript'>
-  $(document).ready( function() {
-    $.ajax({
-      url: "/users/display_subpage",
-      data: { button_id: "posts", view_user: "<%= @user_id %>"},
-      success: function (result) {
-        $("#info_window").html(result);
-      }
-    });
-  });
- 
-  $(document).ready( function() {
-    var elem_prev = 'posts';
-    $("#perm_panel > #nav > .link").click( function(){
-      $("#" + elem_prev).removeClass('selected');
-      $(this).addClass('selected'); 
-      var elem_id   = $(this).attr('id');   
-      var view_user = "<%= @user_id %>";
-      elem_prev = elem_id;
-      $.ajax({
-        url: "/users/display_subpage",
-        data: { button_id: elem_id, view_user: view_user },
-        success: function (result) {
-          $("#info_window").html(result);
-        }
-      });
-    });
-  });
+
+  var view_user_id = <%= @user_id %>;
+
 </script>

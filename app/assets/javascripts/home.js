@@ -1,7 +1,3 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-// You can use CoffeeScript in this file: http://coffeescript.org/
-
 var blurb_page = 0;
 
 function blurb_feed_change_page_static(page) {
@@ -30,6 +26,18 @@ function blurb_feed_change_page_dynamic(page) {
   return;
 
 }
+
+function init_home() {
+  blurb_feed_change_page_static(blurb_page);
+}
+
+$(document).ready( function() {
+  init_home();
+});
+
+$(document).on('page:load', function() {
+  init_home();
+});
 
 // changed from 'next', 'previous' buttons to infinite scrolling. 'prev' functionality depreciated.
 /*
