@@ -6,7 +6,7 @@
    <a>POST</a>
 </div>
 <div id="post_form_div">
-  <%= form_tag :action => 'get_books', :id => 'book_form' do %>
+  <%= form_tag :controller => 'books', :action => 'get_books', :id => 'book_form' do %>
     <%= text_field_tag :book_search_field, nil, :autocomplete => 'off', placeholder: "title or author" %>
   <% end %>
 </div>
