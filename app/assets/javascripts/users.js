@@ -1,6 +1,4 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-// You can use CoffeeScript in this file: http://coffeescript.org/
+var user_blurb_page = 0;
 
 function load_posts_ajax() {
   $.ajax({
@@ -29,6 +27,37 @@ function prep_menu_ajax() {
     });
   });
 }
+
+function user_blurb_feed_change_page(page) {
+
+  $.ajax({
+    url: "/users/change_page",
+    data: { 'blurb_page' : page, view_user :  view_user_id},
+    success: function (result) {
+      $("#user-endless-page-" + page).html(result);
+    }
+  });
+
+  return;
+
+}
+
+$(document).on("click", "#more-user-show", function() {
+
+  user_blurb_page++;
+
+  user_blurb_feed_change_page(user_blurb_page);
+
+});
+
+$(document).on("click", ".delete_blurb_button", function() {
+  $.ajax({
+    type: "POST", 
+    url: "/users/delete_blurb",
+    data: { 'blurb_id' : $(this).attr('id') }
+  });  
+  $(this).parent().parent().parent().css("display", "none");
+});
 
 function init_user_show() {
 

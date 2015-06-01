@@ -1,12 +1,12 @@
-<div id='user_post_feed'>
-  <% @user_blurbs.each do |blurbs| %>
+<div id='user-posts-container'>
+  <% @blurb_array.each do |blurbs| %>
     <div id='book_blurb' class='blurb_container'>
       <div id='cover'>
         <img src=<%= blurbs[0] %> class='info-switch'>
       </div>
       <div id='wrapper'>
-        <div id='user' class='blurb_text bold'>
-          <%= blurbs[3] %>
+        <div id='user' class='blurb_text'>
+          <%= link_to(blurbs[3], {:controller => 'users', :action => 'show', :id => blurbs[4]})%>
         </div>
         <div id='date' class='blurb_text'>
           <%= blurbs[5] %>
@@ -17,7 +17,7 @@
         <div id='book-info' class='hidden blurb_text'>
           <%= blurbs[1] %>
         </div>
-        <% if @is_own_user %>
+        <% if blurbs[4] == @curr_user_id %>
           <div id='delete' class='blurb_text'>
             <a href='#' class='delete_blurb_button' id=<%= blurbs[4] %>>delete</a>
           </div>
@@ -25,17 +25,10 @@
       </div>
     </div>
   <% end %>
+  <div id='user-endless-page-<%= (@blurb_page + 1).to_s %>'>
+    <div id='more-user-show' class='header-text'>
+      <a class='header-text'>more</a>
+    </div>
+  </div>
 </div>
 
-<script type='text/javascript'>
-  $(document).ready( function () {
-    $(".delete_blurb_button").click( function() {
-      $.ajax({
-        type: "POST", 
-        url: "/users/delete_blurb",
-        data: { 'blurb_id' : $(this).attr('id') }
-      });  
-      $(this).parent().parent().parent().css("display", "none");
-    });
-  });
-</script>

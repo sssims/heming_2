@@ -15,25 +15,3 @@
 //= require turbolinks
 //= require_tree .
 
-/* START SECTION posting modal dialog box  */
-
-/* TODO: Allow post to save across pages */
-
-
-$(document).on("click", ".info-switch", function() {
-
-  var wrapper = $(this).parent().parent().children("#wrapper");
-
-  var content = wrapper.children("#content");
-  var bookinf = wrapper.children("#book-info");
-
-  if(bookinf.hasClass("hidden")) {
-    bookinf.removeClass("hidden");
-    content.addClass("hidden");
-  } else {
-    bookinf.addClass("hidden");
-    content.removeClass("hidden");
-  }
-
-});
-

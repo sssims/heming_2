@@ -70,6 +70,24 @@ $(document).on("click", "#post_close_button > #icon", function() {
 
 /* END SECTION posting modal dialog box */
 
+$(document).on("click", ".info-switch", function() {
+
+  var wrapper = $(this).parent().parent().children("#wrapper");
+
+  var content = wrapper.children("#content");
+  var bookinf = wrapper.children("#book-info");
+
+  if(bookinf.hasClass("hidden")) {
+    bookinf.removeClass("hidden");
+    content.addClass("hidden");
+  } else {
+    bookinf.addClass("hidden");
+    content.removeClass("hidden");
+  }
+
+});
+
+
 /*
 $(document).on("click", ".info-switch", function() {
      $(this).parent().parent().children("#wrapper > #book-info").removeClass("hidden");

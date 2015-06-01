@@ -125,6 +125,7 @@ textarea {
 #book_blurb > #wrapper > #content {
   /* font-family: "minion-pro", times, serif; */
   /* font-family: Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif; */
+  width: 315px;
 }
 
 #book_blurb > #wrapper > #book-info {

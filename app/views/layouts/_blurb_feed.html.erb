@@ -1,12 +1,8 @@
 <% @blurb_array.each do |blurbs| %>
   <div id='book_blurb' class='blurb_container'>
-    <div id='title' class='blurb_text'>
-        <%= blurbs[1] %>
-    </div>
     <div id='cover'>
       <img src=<%= blurbs[0] %> class='info-switch'>
     </div>
-    <!--<hr noshade id='dividor'>-->
     <div id='wrapper'>
       <div id='user' class='blurb_text'>
         <%= link_to(blurbs[3], {:controller => 'users', :action => 'show', :id => blurbs[4]})%>
@@ -20,10 +16,17 @@
       <div id='book-info' class='blurb_text hidden'>
          <%= blurbs[1] %>
       </div>
+      <% if blurbs[4] == @curr_user_id %>
+        <div id='delete' class='blurb_text'>
+          <a href='#' class='delete_blurb_button' id=<%= blurbs[4] %>>delete</a>
+        </div>
+      <% end %>
     </div>
   </div>
 <% end %>
 <div id='endless-page-<%= (@blurb_page + 1).to_s %>'>
-  <!-- target for ajax loading of next 'page' of blurbs -->
+  <div id='more' class='header-text'>
+    <a class='header-text'>more</a>
+  </div>
 </div>
 

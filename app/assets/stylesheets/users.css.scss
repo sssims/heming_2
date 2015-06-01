@@ -37,3 +37,33 @@
   color: #7e7e7e;
 }
 
+#more-user-show {
+  float: left;  
+
+  cursor: pointer;
+  cursor: hand;
+}
+
+#user-footer {
+  display: inline-block;
+
+  height: 70px;
+}
+
+#user-posts-container {
+  width: 500px;
+}
+
+#user-followers-container {
+  width: 580px;
+}
+
+#user-following-container {
+  width: 580px;
+}
+
+#info_window {
+  //position: absolute;
+  //left: 420px;
+  display: table;
+}

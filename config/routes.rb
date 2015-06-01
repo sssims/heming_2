@@ -21,6 +21,9 @@ Rails.application.routes.draw do
 
       get :display_subpage
 
+      post 'change_page'
+      get 'change_page'
+
       get :own_show
 
       get :new_follow
