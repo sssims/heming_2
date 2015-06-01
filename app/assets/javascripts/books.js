@@ -32,6 +32,44 @@ $(document).on("click", "#post_book_link", function() {
   $("#book_search_field").focus();
 });
 
+/* AJAX logic for reading book field */
+
+var prev_search = "";
+
+function update_books() {
+  var user_search = $("#book_search_field").serialize();
+  if($("#book_search_field").val() != "" && user_search != prev_search) {
+    $.ajax({
+      url: "/books/get_books",
+      data: user_search,
+      success: function (result) {
+        $("#book_results_target").html(result);
+      }
+    });
+  }
+  prev_search = user_search;
+  setTimeout(update_books, 1500);
+}
+
+$(document).ready( function() {
+
+  update_books();
+
+});
+
+$(document).on('page:load', function() {
+
+  update_books();
+
+});
+
+$(document).on("click", "#post_close_button > #icon", function() { 
+     $("#overlay").css("visibility", "hidden");
+     //$("body").removeClass("no-overflow");
+});
+
+/* END SECTION posting modal dialog box */
+
 /*
 $(document).on("click", ".info-switch", function() {
      $(this).parent().parent().children("#wrapper > #book-info").removeClass("hidden");
