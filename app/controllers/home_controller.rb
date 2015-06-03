@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     # the below is for selecting by 'credited' users
     #blurbs = Blurb.select("*").joins(:user, :book).where("users.cred = ?", true).order(updated_at: :desc)
 
-    blurbs = Blurb.select("*").joins(:user, :book).order(updated_at: :desc).offset(page_number * 10).limit(10)
+    blurbs = Blurb.select("*, blurbs.id as blurb_id").joins(:user, :book).order(updated_at: :desc).offset(page_number * 10).limit(10)
 
     blurbs.each do |blurb|
 
@@ -23,6 +23,7 @@ class HomeController < ApplicationController
       blurb_content.push(blurb.fullname.titleize)
       blurb_content.push(blurb.user_id)
       blurb_content.push(blurb.created_at.strftime("%B %-d, %Y"))
+      blurb_content.push(blurb.blurb_id)
 
       blurb_array.push(blurb_content)
 

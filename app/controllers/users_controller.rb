@@ -192,6 +192,7 @@ class UsersController < ApplicationController
         one_blurb.push(blurb.fullname.titleize)
         one_blurb.push(blurb.user_id)
         one_blurb.push(blurb.created_at.strftime("%B %-d, %Y"))
+        one_blurb.push(blurb.blurb_id)
         blurb_array.push(one_blurb)
       end
      
