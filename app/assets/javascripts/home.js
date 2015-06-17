@@ -14,20 +14,8 @@ function blurb_feed_change_page(page) {
   return;
 
 }
-/*
+
 function scrollListener() {
-
-  if ($(window).scrollTop() >= $(document).height() - $(window).height() - 200) {
-    blurb_page++;
-    blurb_feed_change_page(blurb_page);
-  }
-
-  setTimeout(scrollListener, 500); 
-
-};
-*/
-
-function scrollListener_1() {
  
   var endless_scroll = $("#endless-scroll");
 
@@ -44,14 +32,18 @@ function scrollListener_1() {
     blurb_feed_change_page(blurb_page);
   }
 
-  setTimeout(scrollListener_1, 500); 
+  setTimeout(scrollListener, 500); 
 
 }
 
 $(document).ready(function () {
+  blurb_page = 0;
+  scrollListener();
+});
 
-  //scrollListener();
-  scrollListener_1();
 
+$(document).on("page:load", function() {
+  blurb_page = 0;
+  scrollListener();
 });
 
