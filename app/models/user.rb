@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   #has_many :following_users, through: :relationships, source: :follower
 
   has_many :blurbs
+  has_many :toptens
 
   attr_accessor :password
 

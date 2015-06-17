@@ -1,0 +1,11 @@
+<% if !@is_own_user and @logged_in %>
+
+  <div id='follow-button' class='follow-button'>
+    <% if @is_following %>
+      <a>-</a>
+    <% else %>
+      <a>+</a>
+    <% end %>
+  </div>
+
+<% end %>

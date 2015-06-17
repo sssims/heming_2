@@ -21,13 +21,13 @@ Rails.application.routes.draw do
 
       get :display_subpage
 
-      post 'change_page'
-      get 'change_page'
+      post :change_page
+      get :change_page
 
       get :own_show
 
-      get :new_follow
-      get :unfollow
+      get :follow
+      post :follow
 
       get :edit_photo
 
@@ -35,6 +35,17 @@ Rails.application.routes.draw do
       post :upload_photo
      
       post :delete_blurb
+
+      get :render_topten_modal
+
+      get :get_books
+      post :get_book
+
+      get :select_book
+      post :select_book
+
+      get :submit_book
+      post :submit_book
 
     end
   end

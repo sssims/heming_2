@@ -1,18 +1,16 @@
 <div id='nav_container'>
-  <div id='nav_explore' class='nav_item'>
-    <%= link_to("EXPLORE", {:controller => 'home', :action => 'index'})%>
-    <!--<a id='nav_explore_dropdown'>EXPLORE</a>-->
+  <div id='nav_home' class='nav_item'>
+    <%= link_to("Hemingwire", {:controller => 'home', :action => 'index'})%>
   </div>
   <% if @logged_in %>
     <div id='nav_logout' class='nav_item'>
-      <%= link_to("LOGOUT", {:controller => 'users', :action => 'logout'})%>
+      <%= link_to("Logout", {:controller => 'users', :action => 'logout'})%>
     </div>
-    <div id='nav_personal' class='nav_item'>
-      <%= link_to(@curr_fullname.upcase, {:controller => 'users', :action => 'show', :id => @curr_user_id }) %> 
-      <!--<a><%= @curr_fullname.upcase %></a>-->
+    <div id='nav_own_page' class='nav_item'>
+      <%= link_to(@curr_fullname, {:controller => 'users', :action => 'show', :id => @curr_user_id }) %> 
     </div>
     <div id='nav_post_book' class='nav_item'>
-      <a id="post_book_link">POST</a>
+      <a id="post_book_link">Post</a>
     </div>
   <% else %>
     <div id='nav_signup' class='nav_item'>
@@ -22,12 +20,9 @@
       <%= link_to("Login", {:controller => 'users', :action => 'login'})%>
     </div>
   <% end %>
-  <div id='mag_glass'> 
-    <img src='/mag_glass.png'>
-  </div>
   <div id='nav_search'>
     <%= form_tag :controller => 'users', :action => 'search' do %>
-     <%= text_field_tag :search_people_content, nil, :autocomplete => 'off', :placeholder => 'Search people...' %>
+     <%= text_field_tag :search_people_content, nil, :autocomplete => 'off', :placeholder => 'Search People...' %>
     <% end %>
   </div>
 </div>
@@ -37,42 +32,24 @@
 
 <style>
 
-#nav_explore {
-  margin-left: 40px;
-}
-
-#nav_post_book {
-  margin-left: 40px;
-}
-
-#mag_glass {
-  float: left;
-  margin-top: 5px;
-}
-
 .nav_item {
   float: left;
-  padding: 8px 0 7px 0;
-  margin: 0 40px 0 0; 
-  /*
+  padding: 8px 14px 7px 14px;
   border-style: solid;
   border-width: 0px 0px 0px 1px;
   border-color: #CCCCCC;
-  */
   background: #FFFFFF;
 } 
 
 .nav_item a {
- /* font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif; */
-  font-family: avenir, 'avenir next', helvetica, arial, sans-serif;
-  font-size: 11pt;
-  font-weight: 450;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif;
+  font-size: 10pt;
   text-decoration: none;
   color: #000000;
 }
 
 #nav_home {
-  /*border-right-width: 1px;*/
+  border-right-width: 1px;
 }
 
 #nav_login {
@@ -85,20 +62,15 @@
   padding-left: 7px;
   padding-top: 2px;
 
-  font-family: "Courier New", Courier, monospace;
-
 }
 
 #search_people_content {
-
   width: 100%;
 
   border: none;
   height: 30px;
-  /*font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif;*/
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif;
   font-size: 10pt;
-
 }
 
 #search_people_content:focus {
@@ -109,7 +81,7 @@
   float: right;
 }
 
-#nav_personal {
+#nav_own_page {
   float: right;
 }
 
@@ -137,7 +109,7 @@
   left: 0;
   right: 0;
 
-  height: 44px;
+  height: 34px;
 
   z-index: 9;
 
@@ -150,7 +122,6 @@
   background: #FFFFFF;
 
   margin: 0px;
-  padding-top: 9px;
 }
 
 #top-buffer {

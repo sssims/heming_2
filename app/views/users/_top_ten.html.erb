@@ -1,8 +1,32 @@
-<h2 id='button_id'> top 10 </h2>
+<div id='user-topten-container'>
+  <% @user_topten.each do |blurb| %>
+    <div id='topten-blurb' class='blurb_container'>
+      <div id='topten-order'>
+        <%= blurb.order %>
+      </div>
+      <div id='cover'>
+        <img src=<%= blurb.thumb_path %> class='info-switch'>
+      </div>
+      <div id='wrapper'>
+        <div id='user' class='blurb_text'>
+          <%= link_to(blurb.fullname, {:controller => 'users', :action => 'show', :id => blurb.user_id })%>
+        </div>
+        <div id='date' class='blurb_text'>
+          <%= blurb.created_at %>
+        </div>
+        <div id='content' class='blurb_text'> 
+          <%= blurb.blurb%>
+        </div>
+        <div id='book-info' class='hidden blurb_text'>
+          <%= blurb.title %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<% if @is_own_user %>
+  <div id='add-topten-button' class='header-text'>
+    <a>+</a>
+  </div>
+<% end %>
 
-<style>
-  #button_id {
-    display: table;
-    margin: auto;
-  }
-</style>

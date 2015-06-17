@@ -1,0 +1,9 @@
+<div>
+  <%= form_tag(:controller=>"users",:action=>"submit_book") do %>
+    <p><%= text_area_tag :topten_blurb_form_field, nil, :autocomplete => 'off', :placeholder => 'Your thoughts...' %></p>
+    <%= hidden_field_tag "topten_isbn", @topten_b_isbn %>
+    <%= hidden_field_tag "topten_title", @topten_b_title %>
+    <%= submit_tag 'submit' %>
+  <% end %>
+</div>
+

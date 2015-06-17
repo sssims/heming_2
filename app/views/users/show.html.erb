@@ -1,17 +1,17 @@
 <% @page_title = @user_name %>
 
+<%= render :partial => "post_topten_modal", :layout => false %>
+
 <div id='user_page_container'>
 <div id='perm_panel'>
   <div id='user_info'>
-    <div id='name'>
-      <a><%= @user_name %></a>
-      <% if !@is_own_user and @logged_in %>
-        <% if !@is_following %>
-          <%= link_to("+", {:controller => 'users', :action => 'new_follow', :to_follow => @user_id}, :class => 'follow-button')%>
-        <% else %>
-          <%= link_to("-", {:controller => 'users', :action => 'unfollow', :to_unfollow => @user_id}, :class => 'follow-button')%>
-        <% end %>
-      <% end %>
+    <div id='name-container'>
+      <div id='name'>
+        <%= @user_name %>
+      </div>
+      <div id='follow-button-container'>
+        <%= render :partial => 'follow_button' %>
+      </div>
     </div>
     <img id='photo' src=<%= @user_photo%>>
     <div id='about'>
@@ -71,13 +71,21 @@
     margin: 50px 5px 0px 50px;
   }
 
-  #perm_panel > #user_info > #name {
+  #perm_panel > #user_info > #name-container {
     display: table;
     margin: 5px auto 5px auto;
    
     font-size: 20pt;
     font-family: "minion-pro", times, serif;
     font-weight: bold;
+  }
+
+  #perm_panel > #user_info > #name-container > #name {
+    float: left;
+  }
+
+  #perm_panel > #user_info > #name-container > #follow-button-container {
+    float: left;
   }
 
   #perm_panel > #user_info > #photo{

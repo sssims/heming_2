@@ -1,0 +1,75 @@
+<div id="book_scroll_container">
+  <div>
+    <a><%= @error %></a>
+  </div>
+  <!--<div id="books_scroll_left">
+    <div>
+      A
+    </div>
+  </div>-->
+  <div id="book_results_window">
+    <% i = 0 %>
+    <% @books_content.each do |book| %>
+      <span class='book_image' id=<%= book[0]%> title=<%= book[1]%>>
+        <img src=<%= book[2]%> title=<%= book[3]%>> 
+      </span>
+      <% i += 1 %>
+    <% end %>
+  </div>
+  <!--<div id="books_scroll_right">
+    <div>
+      A
+    </div>
+  </div>-->
+</div>
+<div id='topten_book_form_area'>
+</div>
+
+<script type="text/javascript">
+$('.book_image').click( function() {
+  $('.book_image').removeClass('selected');
+  $(this).addClass('selected');
+
+  // ajax request to action that renders partial with form.
+
+  var topten_book_info = { 
+    'topten_isbn' : $(this).attr('id'), 
+    'topten_img' : $(this).find('img').attr('title'), 
+    'topten_thumb' : $(this).find('img').attr('src'), 
+    'topten_title' : $(this).attr('title')
+  };
+
+  $.ajax({
+    url: "/users/select_book",
+    data: topten_book_info,
+    success: function (result) {
+      $("#topten_book_form_area").html(result);
+      $("#topten_blurb_form_field").focus();
+    }
+  });
+});
+</script>
+
+<style>
+  #books_scroll_right {
+    float: right;
+  }
+ 
+  #books_scroll_left {
+    float: left;
+  }
+
+  #book_results_window {
+    display: inline-block;
+    overflow: auto;
+    white-space: nowrap;
+
+    width: 450px;
+  }
+
+  .selected img { 
+    border-style: solid;
+    border-width: 2px;
+    border-color: red;
+  }
+</style>

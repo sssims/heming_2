@@ -1,5 +1,8 @@
 class Book < ActiveRecord::Base
+
   validates :title, :presence => true, :length => { :in => 1..128 }
 
-  belongs_to :blurb
+  has_many :blurbs
+  has_many :toptens
+
 end

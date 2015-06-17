@@ -6,69 +6,52 @@ function blurb_feed_change_page(page) {
     url: "/home/change_page",
     data: { 'blurb_page' : page },
     success: function (result) {
-      $("#endless-page-" + page).html(result);
+      $("#endless-scroll").html(result);
+      $("#endless-scroll").attr("id", "scroll-page-" + page); 
     }
   });
   
   return;
 
 }
-
-$(document).on("click", "#more", function() {
-
-  blurb_page++;
-
-  blurb_feed_change_page(blurb_page);
-
-});
-
-// changed from 'next', 'previous' buttons to infinite scrolling. 'prev' functionality depreciated.
 /*
-$(document).on("click", "#blurb_navigation > #prev", function() {
+function scrollListener() {
 
-  if (blurb_page > 0) {
-    blurb_page--;
+  if ($(window).scrollTop() >= $(document).height() - $(window).height() - 200) {
+    blurb_page++;
+    blurb_feed_change_page(blurb_page);
   }
 
-  blurb_feed_change_page(blurb_page);
+  setTimeout(scrollListener, 500); 
 
-});
-
-$(document).on("click", "#blurb_navigation > #next", function() {
-
-  blurb_page++;
-
-  blurb_feed_change_page(blurb_page);
-
-});
+};
 */
 
+function scrollListener_1() {
+ 
+  var endless_scroll = $("#endless-scroll");
 
-/*
-$(document).ready( function() {
-  $('.blurb_container').each(function() {
-    var color = '#'+Math.random().toString(16).substr(-6);
-    $(this).css('background-color', color);
-  });
-});
-*/
+  if(!endless_scroll.length) {
+    return;
+  }
 
-/*
-$(window).load( function() {
-  $('.blurb_container').each(function() {
-    var top_margin = 211- $(this).find("img").height();
-    $(this).css('margin-top', top_margin);
-  });
-});
-*/
+  var element_top = endless_scroll.offset().top;
+  var scroll_top = $(window).scrollTop();
+  var scroll_bottom = scroll_top + $(window).height();
 
-/* SCROLL BAR ADJUST ON WINDOW RESIZE FOR SIDE-SCROLLING */
-/*
-$(document).ready( function() {
-  $('#feed_window').css('height', $(window).height() - 128);
-  window.addEventListener('resize', function() {
-    $('#feed_window').css('height', $(window).height() - 128);
-  });
+  if (element_top > scroll_top && element_top < scroll_bottom) {
+    blurb_page++;
+    blurb_feed_change_page(blurb_page);
+  }
+
+  setTimeout(scrollListener_1, 500); 
+
+}
+
+$(document).ready(function () {
+
+  //scrollListener();
+  scrollListener_1();
+
 });
-*/
 

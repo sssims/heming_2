@@ -24,9 +24,8 @@
     </div>
   </div>
 <% end %>
-<div id='endless-page-<%= (@blurb_page + 1).to_s %>'>
-  <div id='more' class='header-text'>
-    <a class='header-text'>more</a>
+<% if @blurb_array.length != 0 %>
+  <div id='endless-scroll'>
   </div>
-</div>
+<% end %>
 
