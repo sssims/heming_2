@@ -211,17 +211,17 @@ class UsersController < ApplicationController
     full_img = Magick::Image.read(img_full_path).first
     thumb_img = Magick::Image.read(img_thumb_path).first
 
-    full_img = img.resize_to_fit(256, 414)
-    full_img.write(img_file_path)
+    full_img = full_img.resize_to_fit(256, 414)
+    full_img.write(img_full_path)
 
-    thumb_img = img.resize_to_fit(200, 323)
-    thumb_img.write(img_file_path)
+    thumb_img = thumb_img.resize_to_fit(200, 323)
+    thumb_img.write(img_thumb_path)
 
     full_serve_path = '/serve_user_photo/' << session[:user_id].to_s << '_0_full.jpeg'
-    User.update(session[:user_id], :photo_link_full => full_photo_path)
+    User.update(session[:user_id], :photo_link_full => full_serve_path)
 
     thumb_serve_path = '/serve_user_photo/' << session[:user_id].to_s << '_0_thumb.jpeg'
-    User.update(session[:user_id], :photo_link_thumb => thumb_photo_path)
+    User.update(session[:user_id], :photo_link_thumb => thumb_serve_path)
 
     redirect_to :action => 'show', :id => session[:user_id]
 
