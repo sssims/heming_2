@@ -51,11 +51,9 @@
 }
 
 #user-followers-container {
-  width: 580px;
 }
 
 #user-following-container {
-  width: 580px;
 }
 
 #follow-button-container {
@@ -71,9 +69,8 @@
 }
 
 #info_window {
-  //position: absolute;
-  //left: 420px;
-  display: table;
+  position: absolute;
+  left: 420px;
 }
 
 #topten-post-overlay {

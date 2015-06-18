@@ -17,7 +17,8 @@ class UsersController < ApplicationController
 
     @user = User.new(user_params)
     @user.cred = false
-    @user.photo_link = '/serve_user_photo/default.jpeg'
+    @user.photo_link_full = '/serve_user_photo/default_full.jpeg'
+    @user.photo_link_thumb = '/serve_user_photo/default_thumb.jpeg'
 
     if @user.save
       session[:user_id] = @user.id
@@ -43,7 +44,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
   
     @user_id    = user.id
-    @user_photo = user.photo_link
+    @user_photo = user.photo_link_full
     @user_about = user.about
     @user_name  = user.fullname.titleize
 
@@ -150,7 +151,7 @@ class UsersController < ApplicationController
 
     when 'about'
       @about_content = User.find(params[:view_user]).about
-      @about_photo   = User.find(params[:view_user]).photo_link
+      @about_photo   = User.find(params[:view_user]).photo_link_full
 
       render :partial => 'about', :layout => false 
     when 'edit_profile'
@@ -195,20 +196,35 @@ class UsersController < ApplicationController
       return
     end
 
-    img_file_path = Rails.root.to_s << '/content/user_photos/' << session[:user_id].to_s << '_0.jpeg'
+    img_full_path = Rails.root.to_s << '/content/user_photos/' << session[:user_id].to_s << '_0_full.jpeg'
+
+    img_thumb_path = Rails.root.to_s << '/content/user_photos/' << session[:user_id].to_s << '_0_thumb.jpeg'
   
-    open(img_file_path, 'wb') do |file|
+    open(img_full_path, 'wb') do |file|
       file << open(params[:uploadfile]).read
     end
 
-    img = Magick::Image.read(img_file_path).first
-    img = img.resize_to_fit(256,256)
-    img.write(img_file_path)
+    open(img_thumb_path, 'wb') do |file|
+      file << open(params[:uploadfile]).read
+    end
 
-    serve_photo_path = '/serve_user_photo/' << session[:user_id].to_s << '_0.jpeg'
-    User.update(session[:user_id], :photo_link => serve_photo_path)
-  
+    full_img = Magick::Image.read(img_full_path).first
+    thumb_img = Magick::Image.read(img_thumb_path).first
+
+    full_img = img.resize_to_fit(256, 414)
+    full_img.write(img_file_path)
+
+    thumb_img = img.resize_to_fit(200, 323)
+    thumb_img.write(img_file_path)
+
+    full_serve_path = '/serve_user_photo/' << session[:user_id].to_s << '_0_full.jpeg'
+    User.update(session[:user_id], :photo_link_full => full_photo_path)
+
+    thumb_serve_path = '/serve_user_photo/' << session[:user_id].to_s << '_0_thumb.jpeg'
+    User.update(session[:user_id], :photo_link_thumb => thumb_photo_path)
+
     redirect_to :action => 'show', :id => session[:user_id]
+
   end
  
   def get_blurbs(page_number=0)

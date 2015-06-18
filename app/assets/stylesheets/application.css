@@ -355,6 +355,7 @@ textarea {
   right: 0;
 
   height: 44px;
+  min-width: 600px;
 
   z-index: 9;
 

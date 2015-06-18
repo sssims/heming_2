@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605222848) do
+ActiveRecord::Schema.define(version: 20150618181458) do
 
   create_table "blurbs", force: :cascade do |t|
     t.integer  "user_id"
@@ -57,16 +57,17 @@ ActiveRecord::Schema.define(version: 20150605222848) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",   limit: 255
-    t.string   "fullname",   limit: 255
-    t.string   "email",      limit: 255
-    t.string   "enc_pword",  limit: 255
-    t.string   "salt",       limit: 255
+    t.string   "username",         limit: 255
+    t.string   "fullname",         limit: 255
+    t.string   "email",            limit: 255
+    t.string   "enc_pword",        limit: 255
+    t.string   "salt",             limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "about"
-    t.string   "photo_link", limit: 255
+    t.string   "photo_link_full",  limit: 255
     t.boolean  "cred"
+    t.string   "photo_link_thumb"
   end
 
   add_index "users", ["fullname"], name: "index_users_on_fullname"
