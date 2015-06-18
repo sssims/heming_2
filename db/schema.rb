@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618181458) do
+ActiveRecord::Schema.define(version: 20150618222813) do
 
   create_table "blurbs", force: :cascade do |t|
     t.integer  "user_id"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 20150618181458) do
     t.string   "photo_link_full",  limit: 255
     t.boolean  "cred"
     t.string   "photo_link_thumb"
+    t.integer  "follower_count"
+    t.integer  "following_count"
   end
 
   add_index "users", ["fullname"], name: "index_users_on_fullname"

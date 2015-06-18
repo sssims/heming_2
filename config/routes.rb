@@ -14,10 +14,12 @@ Rails.application.routes.draw do
 
       get :login
       get :logout
+
       get :login_attempt
       post :login_attempt
    
       post :search
+      get :search # to remove, when I fix search refresh routing bug 
 
       get :display_subpage
 

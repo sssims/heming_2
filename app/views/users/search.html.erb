@@ -1,21 +1,21 @@
 <div id='search_results'>
   <% @results.each do |result| %>
-    <div class='search_one_result'>
-      <img src=<% result.photo_link %>>
-      <%= link_to(result.fullname, {:action => 'show', :id => result.id}) %>
-    <div>
+    <div class='search_item'>
+      <div class='search-image'>
+        <img src=<%=result.photo_link_thumb %>>
+      </div>
+      <div class='search-name'>
+        <%= link_to(result.fullname, {:action => 'show', :id => result.id}) %>
+      </div>
+    </div>
   <% end %>
 </div>
 
 <style>
+
   html, body {
     height: 100%;
   }
-
-  .search_one_result a {  
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-    font-size: 14pt;
-    text-decoration: none;
-  }
  
 </style>
+

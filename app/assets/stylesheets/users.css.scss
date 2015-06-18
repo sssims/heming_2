@@ -123,3 +123,17 @@
   height: 30px;
   width: 440px;
 }
+
+/* search.html.erb */
+
+.search_item {
+  float: left;
+  border: 1px solid #000000;
+  margin: 10px;
+}
+
+.search_item a {  
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-size: 14pt;
+  text-decoration: none;
+}

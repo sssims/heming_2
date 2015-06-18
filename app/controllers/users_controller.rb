@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def show
-
+   
     user = User.find(params[:id])
   
     @user_id    = user.id
@@ -170,7 +170,11 @@ class UsersController < ApplicationController
   def search
     user_query = params[:search_people_content]
 
-    @results = User.where("username LIKE ? OR fullname LIKE ?", "%#{user_query}%", "%#{user_query}%")
+    if user_query.nil?
+      @results = []
+    else 
+      @results = User.where("username LIKE ? OR fullname LIKE ?", "%#{user_query}%", "%#{user_query}%")
+    end
 
   end
 
@@ -214,7 +218,7 @@ class UsersController < ApplicationController
     full_img = full_img.resize_to_fit(256, 414)
     full_img.write(img_full_path)
 
-    thumb_img = thumb_img.resize_to_fit(200, 323)
+    thumb_img = thumb_img.resize_to_fit(150, 243)
     thumb_img.write(img_thumb_path)
 
     full_serve_path = '/serve_user_photo/' << session[:user_id].to_s << '_0_full.jpeg'
