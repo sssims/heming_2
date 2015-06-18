@@ -24,7 +24,7 @@ $(document).keyup(function (e) {
   }
 });
 
-$(document).on("click", "#post_book_link", function() {
+$(document).on("click", "#post-book-link", function() {
   el = document.getElementById("overlay");
   el.style.visibility = "visible";
   $("body").addClass("no-overflow");

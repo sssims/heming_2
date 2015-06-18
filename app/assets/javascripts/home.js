@@ -36,14 +36,61 @@ function scrollListener() {
 
 }
 
-$(document).ready(function () {
+$(document).on('click', function(event) {
+  
+  if (!$(event.target).closest('#personal-name').length) {
+
+    var personal_dropdown = $("#personal-dropdown");
+
+    personal_dropdown.css("visibility", "hidden");
+    personal_dropdown.css("margin-top", "-200px"); // HACK
+
+  } 
+
+  if (!$(event.target).closest('#explore-name').length) {
+
+    var explore_dropdown = $("#explore-dropdown");
+
+    explore_dropdown.css("visibility", "hidden");
+    explore_dropdown.css("margin-top", "-200px"); // HACK
+ 
+  }
+
+});
+
+function navMenuDropdownListener() {
+
+  var personal_button = $("#personal-name");
+  var personal_dropdown = $("#personal-dropdown");  
+
+  var explore_button= $("#explore-name");
+  var explore_dropdown = $("#explore-dropdown");  
+
+  personal_button.click(function() {
+    personal_dropdown.css("visibility", "visible"); 
+    personal_dropdown.css("margin-top", "8px"); // HACK
+  });
+
+  explore_button.click(function() {
+    explore_dropdown.css("visibility", "visible"); 
+    explore_dropdown.css("margin-top", "8px"); // HACK
+  });
+
+}
+
+function initPage() {
   blurb_page = 0;
+
   scrollListener();
+  navMenuDropdownListener();
+}
+
+$(document).ready(function () {
+  initPage();
 });
 
 
 $(document).on("page:load", function() {
-  blurb_page = 0;
-  scrollListener();
+  initPage();
 });
 

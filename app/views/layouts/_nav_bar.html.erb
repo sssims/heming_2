@@ -1,31 +1,59 @@
-<div id='nav_container'>
-  <div id='nav_explore' class='nav_item'>
-    <%= link_to("EXPLORE", {:controller => 'home', :action => 'index'})%>
-    <!--<a id='nav_explore_dropdown'>EXPLORE</a>-->
+<div id='nav-container'>
+  <div id='nav-explore' class='nav-item'>
+    <div id='explore-name'>
+      <a>EXPLORE</a>
+    </div>
+    <div id='explore-dropdown' class='nav-dropdown'>
+      <div id='explore-option-0' class='dropdown-option'>
+        <a>Featured</a>
+      </div> 
+      <div id='explore-option-1' class='dropdown-option'>
+        <a>Trending</a>
+      </div> 
+      <div id='explore-option-2' class='dropdown-option'>
+        <a>Top 100</a>
+      </div> 
+    </div>
   </div>
   <% if @logged_in %>
-    <div id='nav_logout' class='nav_item'>
-      <%= link_to("LOGOUT", {:controller => 'users', :action => 'logout'})%>
+    <div id='nav-personal' class='nav-item'>
+      <div id='personal-name'>
+        <a><%= @curr_fullname.upcase %></a>
+      </div>
+      <div id='personal-dropdown' class='nav-dropdown'>
+        <div id='personal-option-0' class='dropdown-option'>
+          <a><%= link_to("Home", {:controller => 'home', :action => 'index'})%></a>
+        </div> 
+        <div id='personal-option-1' class='dropdown-option'>
+          <a><%= link_to("Profile", {:controller => 'users', :action => 'show', :id => @curr_user_id })%></a>
+        </div> 
+        <div id='personal-option-2' class='dropdown-option'>
+          <!--<a><%= link_to("Settings", {:controller => 'users', :action => 'new'})%></a>-->
+          <a>Settings</a>
+        </div> 
+        <div id='personal-option-3' class='dropdown-option'>
+          <a><%= link_to("Logout", {:controller => 'users', :action => 'logout'})%></a>
+        </div> 
+      </div>
     </div>
-    <div id='nav_personal' class='nav_item'>
-      <%= link_to(@curr_fullname.upcase, {:controller => 'users', :action => 'show', :id => @curr_user_id }) %> 
-      <!--<a><%= @curr_fullname.upcase %></a>-->
-    </div>
-    <div id='nav_post_book' class='nav_item'>
-      <a id="post_book_link">POST</a>
+    <div id='nav-post-book' class='nav-item'>
+      <div id='pencil'>
+        <img src='/pencil.png'>
+      </div>
+      <a id="post-book-link">POST</a>
     </div>
   <% else %>
-    <div id='nav_signup' class='nav_item'>
+    <div id='nav-signup' class='nav-item'>
       <%= link_to("SIGN UP", {:controller => 'users', :action => 'new'})%>
     </div>
-    <div id='nav_login' class='nav_item'> 
+    <div id='nav-login' class='nav-item'> 
       <%= link_to("LOGIN", {:controller => 'users', :action => 'login'})%>
     </div>
   <% end %>
-  <div id='mag_glass'> 
+  <div id='mag-glass'> 
     <img src='/mag_glass.png'>
   </div>
-  <div id='nav_search'>
+  <div id='nav-search'>
     <%= form_tag :controller => 'users', :action => 'search' do %>
      <%= text_field_tag :search_people_content, nil, :autocomplete => 'off', :placeholder => 'Search people...' %>
     <% end %>
@@ -34,128 +62,3 @@
 <div id='top-buffer'>
    <!-- Has same height as nav bar but is 'in the flow' so It leaves space at the top of every page-->
 </div>
-
-<style>
-
-#nav_explore {
-  margin-left: 40px;
-}
-
-#nav_post_book {
-  margin-left: 40px;
-}
-
-#mag_glass {
-  float: left;
-  margin-top: 5px;
-}
-
-.nav_item {
-  float: left;
-  padding: 8px 0 7px 0;
-  margin: 0 40px 0 0; 
-  /*
-  border-style: solid;
-  border-width: 0px 0px 0px 1px;
-  border-color: #CCCCCC;
-  */
-  background: #FFFFFF;
-} 
-
-.nav_item a {
- /* font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif; */
-  font-family: avenir, 'avenir next', helvetica, arial, sans-serif;
-  font-size: 11pt;
-  font-weight: 450;
-  text-decoration: none;
-  color: #000000;
-}
-
-#nav_home {
-  /*border-right-width: 1px;*/
-}
-
-#nav_login {
-  float: right;
-}
-
-#nav_search {
-  overflow: hidden;
-
-  padding-left: 7px;
-  padding-top: 2px;
-
-  font-family: "Courier New", Courier, monospace;
-
-}
-
-#search_people_content {
-
-  width: 100%;
-
-  border: none;
-  height: 30px;
-  /*font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif;*/
-  font-family: "Courier New", Courier, monospace;
-  font-size: 10pt;
-
-}
-
-#search_people_content:focus {
-  outline-width: 0;
-}
-
-#nav_logout {
-  float: right;
-}
-
-#nav_personal {
-  float: right;
-}
-
-#nav_signup {
-  float: right;
-}
-
-#nav_post_book {
-  float: right;
-}
-
-/* post_book_link is not an href. The navigating is done with a jQuery click and jQuery ajax 
- * ==> this makes it look like a link 
- */
-
-#post_book_link {
-   cursor: pointer;
-   cursor: hand;
-}
-
-#nav_container {
-  position: fixed;
-
-  top: 0;
-  left: 0;
-  right: 0;
-
-  height: 44px;
-
-  z-index: 9;
-
-  /* IMPROVE */
-
-  border-width: 0px 0px 1px 0px;
-  border-style: solid;
-  border-color: #CCCCCC;
-
-  background: #FFFFFF;
-
-  margin: 0px;
-  padding-top: 9px;
-}
-
-#top-buffer {
-  height: 34px;
-  margin-bottom: 30px;
-}
-
-</style>

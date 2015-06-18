@@ -238,3 +238,148 @@ textarea {
 
    font-family: "Courier New", Courier, monospace;
 }
+
+.nav-item {
+  float: right;
+  padding: 8px 0 7px 0;
+  margin: 0 40px 0 0; 
+  /*
+  border-style: solid;
+  border-width: 0px 0px 0px 1px;
+  border-color: #CCCCCC;
+  */
+  background: #FFFFFF;
+} 
+
+.nav-item a {
+ /* font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif; */
+  font-family: avenir, 'avenir next', helvetica, arial, sans-serif;
+  font-size: 11pt;
+  font-weight: 450;
+  text-decoration: none;
+  color: #000000;
+}
+
+#nav-home {
+  /*border-right-width: 1px;*/
+}
+
+#nav-login {
+  float: right;
+}
+
+#nav-search {
+  overflow: hidden;
+
+  padding-left: 7px;
+  padding-top: 2px;
+
+  font-family: "Courier New", Courier, monospace;
+}
+
+#nav-explore {
+  float: left;
+  margin-left: 40px;
+}
+
+#nav-post-book {
+  margin-left: 40px;
+}
+
+#mag-glass {
+  float: left;
+  margin-top: 5px;
+}
+
+#post-book-link {
+  float: left;
+}
+
+#pencil {
+  float: left;
+  margin: -6px 7px 0 40px;
+}
+
+#search_people_content {
+
+  width: 100%;
+
+  border: none;
+  height: 30px;
+  /*font-family: "Lucida Grande", "Lucida Sans Unicode", Ariel, sans-serif;*/
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10pt;
+
+}
+
+#search_people_content:focus {
+  outline-width: 0;
+}
+
+#post-book-link {
+   cursor: pointer;
+   cursor: hand;
+}
+
+#personal-name, #explore-name {
+   cursor: pointer;
+   cursor: hand;
+}
+
+.nav-dropdown {
+
+  margin-top: -200px; /* HACK */
+  margin-left: -18px;
+  margin-right: -20px;
+
+  padding: 8px 0;
+
+  -webkit-box-shadow: 0px 2px 3px 0px rgba(212,212,212,1);
+  -moz-box-shadow: 0px 2px 3px 0px rgba(212,212,212,1);
+  box-shadow: 0px 2px 3px 1px rgba(212,212,212,1);
+
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+  border-color: #CCCCCC;
+
+  background-color: white;
+
+  visibility: hidden;
+}
+
+#nav-container {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 44px;
+
+  z-index: 9;
+
+  /* IMPROVE */
+
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+  border-color: #CCCCCC;
+
+  background: #FFFFFF;
+
+  margin: 0px;
+  padding-top: 9px;
+}
+
+.dropdown-option {
+  padding: 10px 10px 10px 10px;
+}
+
+.dropdown-option:hover {
+  background-color: #EAEAEA;
+}
+
+#top-buffer {
+  height: 34px;
+  margin-bottom: 30px;
+}
+
