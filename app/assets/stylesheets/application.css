@@ -14,6 +14,10 @@
  *= require_self
  */
 
+html, body {
+  height: 100%;
+}
+
 body {
   position: relative;
 }
@@ -179,15 +183,6 @@ textarea {
   text-align: center;
 
   width: 500px;
-}
-
-.follow-button {
-  margin-left: 8px;
-  font-size: 18pt;
-
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-  text-decoration: none;
-  color: gray;
 }
 
 #post_close_button {
@@ -383,7 +378,7 @@ textarea {
 }
 
 #top-buffer {
-  height: 34px;
+  height: 54px;
   margin-bottom: 30px;
 }
 

@@ -1,11 +1,16 @@
-<div id='search_results'>
+<div id='search-results'>
   <% @results.each do |result| %>
     <div class='search_item'>
       <div class='search-image'>
         <img src=<%=result.photo_link_thumb %>>
       </div>
-      <div class='search-name'>
-        <%= link_to(result.fullname, {:action => 'show', :id => result.id}) %>
+      <div class='search-info-container'>
+        <div class='search-followers'>
+           <a><%= result.follower_count %> Followers</a>
+        </div>
+        <div class='search-name'>
+          <%= link_to(result.fullname, {:action => 'show', :id => result.id}) %>
+        </div>
       </div>
     </div>
   <% end %>

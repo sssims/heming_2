@@ -68,11 +68,6 @@
   font-size: 18pt;
 }
 
-#info_window {
-  position: absolute;
-  left: 420px;
-}
-
 #topten-post-overlay {
   visibility: hidden;
   position: fixed;
@@ -126,14 +121,143 @@
 
 /* search.html.erb */
 
+#search-results {
+
+}
+
 .search_item {
   float: left;
-  border: 1px solid #000000;
+
+  max-width: 150px;
+
+//  border: 1px solid #5A5A5A;
   margin: 10px;
 }
 
 .search_item a {  
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-  font-size: 14pt;
+  //font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: avenir, 'avenir next', helvetica, arial, sans-serif;
+  font-weight: 400;
   text-decoration: none;
 }
+
+.search-followers a {
+  font-size: 9pt;
+  color: gray;
+}
+
+.search-name a {
+  font-size: 11pt;
+  color: black;
+  text-decoration: none;
+}
+
+.search-info-container {
+//   padding: 4px 4px 8px 4px;
+}
+
+/* show.html.erb */
+
+  #user_page_container {
+    position: relative;
+  }
+
+  #perm_panel {
+   
+    margin: 30px 0 30px 0;
+
+    //border-style: solid;
+    //border-width: 0px 1px 0px 0px;
+
+    //font-family: "minion-pro", times, serif;
+    font-family: avenir, 'avenir next', helvetica, arial, sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+    
+  }
+
+  #perm_panel > #user_info {
+    display: table;
+    margin: auto; 
+
+  }
+
+  #perm_panel > #user_info > #name-container {
+    display: table;
+    margin: 5px auto 5px auto;
+   
+    font-size: 20pt;
+    font-weight: 600;
+  }
+
+  #perm_panel > #user_info > #name-container > #name {
+    float: left;
+  }
+
+  #perm_panel > #user_info > #photo{
+    display: block;
+    margin: auto;
+
+    border-style: solid;
+    border-width: 1px;
+  }
+
+  #perm_panel > #user_info > #about {
+    display: table;
+    margin: auto;
+
+    padding: 2px;
+
+    //font-family: "Courier", Courier, monospace;
+    font-size: 10pt;
+    letter-spacing: -0.5pt;
+  } 
+
+  #perm_panel > #nav {
+    display: table;
+    margin: auto;
+  }
+
+  #perm_panel > #nav > .link {
+    float: left;
+
+    padding: 2px;
+    margin: 5px 5px 5px 5px;
+
+    cursor: pointer;
+  }
+
+  #perm_panel > #nav > .selected {
+    margin-right: 0px;
+    border-right: none;
+  }
+
+  #perm_panel > #nav > .link > a {
+    //font-family: "Courier", Courier, monospace;
+    font-size: 10pt;
+    letter-spacing: -0.5pt;
+    text-decoration: none;
+  }
+
+  #info_window {
+  }
+
+  #follow-button-container {
+    text-align: center;
+  }
+
+  #follow-button {
+    display: inline-block;
+    margin: 5px auto 5px auto;
+
+    padding: 4px;
+ 
+    font-size: 11pt;
+
+    border: 1px solid black;
+
+    cursor: pointer;
+    cursor: hand;
+  }
+
+

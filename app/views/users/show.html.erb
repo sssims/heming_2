@@ -5,17 +5,17 @@
 <div id='user_page_container'>
 <div id='perm_panel'>
   <div id='user_info'>
+    <img id='photo' src=<%= @user_photo %>>
     <div id='name-container'>
       <div id='name'>
         <%= @user_name %>
       </div>
-      <div id='follow-button-container'>
-        <%= render :partial => 'follow_button' %>
-      </div>
     </div>
-    <img id='photo' src=<%= @user_photo %>>
     <div id='about'>
       <a id='text'><%= @user_about %></a>
+    </div>
+    <div id='follow-button-container'>
+      <%= render :partial => 'follow_button' %>
     </div>
   </div>
   <div id='nav'>
@@ -37,100 +37,19 @@
       </div>
     <% end %>
   </div>
+    <hr>
+  <div>
+  
+  </div>
 </div>
 <div id='info_window'>
 </div>
 <div id='user-footer'>
 </div>
 
-<style>
-  html, body {
-    height: 100%;
-  }
-
-  #user_page_container {
-    position: relative;
-  }
-
-  #perm_panel {
-    position: fixed; 
-   
-    margin-bottom: 30px;
-
-    /*
-    border-style: solid;
-    border-width: 0px 1px 0px 0px;
-    */
-  }
-
-  #perm_panel > #user_info {
-    float: left;
- 
-    max-width: 258px; 
- 
-    margin: 50px 5px 0px 50px;
-  }
-
-  #perm_panel > #user_info > #name-container {
-    display: table;
-    margin: 5px auto 5px auto;
-   
-    font-size: 20pt;
-    font-family: "minion-pro", times, serif;
-    font-weight: bold;
-  }
-
-  #perm_panel > #user_info > #name-container > #name {
-    float: left;
-  }
-
-  #perm_panel > #user_info > #name-container > #follow-button-container {
-    float: left;
-  }
-
-  #perm_panel > #user_info > #photo{
-    border-style: solid;
-    border-width: 1px;
-  }
-
-  #perm_panel > #user_info > #about {
-    padding: 2px;
-
-    margin: 5px 0px 5px 0px;
-
-    font-family: "Courier", Courier, monospace;
-    font-size: 10pt;
-    letter-spacing: -0.5pt;
-  } 
-
-  #perm_panel > #nav {
-    float: left;
-    margin: 100px 0px 5px 0px;
-  }
-
-  #perm_panel > #nav > .link {
-    padding: 2px;
-    margin: 5px 5px 5px 5px;
-
-    cursor: pointer;
-  }
-
-  #perm_panel > #nav > .selected {
-    margin-right: 0px;
-    border-right: none;
-  }
-
-  #perm_panel > #nav > .link > a {
-    font-family: "Courier", Courier, monospace;
-    font-size: 10pt;
-    letter-spacing: -0.5pt;
-    text-decoration: none;
-  }
-
-</style>
-
 <script type='text/javascript'>
 
   var view_user_id = <%= @user_id %>;
 
 </script>
+
