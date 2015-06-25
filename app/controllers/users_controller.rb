@@ -50,6 +50,8 @@ class UsersController < ApplicationController
 
     @is_following = Relationship.exists?(follower_id: session[:user_id], followed_id: params[:id])
     @is_own_user = (params[:id].to_i == session[:user_id].to_i)
+
+    # ADD CODE TO Have show handle which subpage to load with a param. param[:subpage]
     
   end
 
@@ -145,7 +147,7 @@ class UsersController < ApplicationController
       render :partial => 'followers', :layout => false 
     when 'top_ten'
 
-      @user_topten = Topten.select("*, toptens.id as topten_id").joins(:user, :book).where(user_id: params[:view_user]).order(:order)
+      @user_topten = Topten.select("*, toptens.id as topten_id").joins(:user, :book).where(user_id: params[:view_user]).order(:sort)
 
       render :partial => 'top_ten', :layout => false 
 
@@ -170,10 +172,10 @@ class UsersController < ApplicationController
   def search
     user_query = params[:search_people_content]
 
-    if user_query.nil?
-      @results = []
+    if user_query.nil? or user_query = ""
+      @results = User.where("username='Him'")
     else 
-      @results = User.where("username LIKE ? OR fullname LIKE ?", "%#{user_query}%", "%#{user_query}%")
+      @results = User.where("username LIKE ? OR fullname LIKE ? OR username='Him'", "%#{user_query}%", "%#{user_query}%")
     end
 
   end
@@ -348,7 +350,7 @@ class UsersController < ApplicationController
     new_topten.blurb= params[:topten_blurb_form_field]
     new_topten.user_id = session[:user_id]
     new_topten.book_id = blurb_book.id
-    new_topten.order   = 9
+    new_topten.sort = (Topten.select('*').where("user_id = ?", session[:user_id])).length + 1
 
     if new_topten.save
       #redirect_to(:controller => 'home', :action => 'index')
@@ -358,6 +360,54 @@ class UsersController < ApplicationController
     end
 
     redirect_to(:controller => 'users', :action => 'show', :id => session[:user_id])
+
+  end
+
+  def topten_reorder_up
+
+    curr_user_id = session[:user_id].to_i
+    curr_sort    = params[:sort].to_i
+
+    topten_row_0 = Topten.select("*").where("user_id = ? AND sort = ?", curr_user_id, curr_sort).first
+        
+    topten_row_1 = Topten.select("*").where("user_id = ? AND sort = ?", curr_user_id, curr_sort - 1).first
+        
+    if !topten_row_1.blank?
+
+      Topten.update(topten_row_0.id, :sort => topten_row_1.sort)
+      Topten.update(topten_row_1.id, :sort => topten_row_0.sort)
+
+    else 
+
+      Topten.update(topten_row_0.id, :sort => topten_row_0.sort - 1)
+
+    end 
+
+    render :nothing => true
+
+  end
+
+  def topten_reorder_down
+
+    curr_user_id = session[:user_id].to_i
+    curr_sort    = params[:sort].to_i
+
+    topten_row_0 = Topten.select("*").where("user_id = ? AND sort = ?", curr_user_id, curr_sort).first
+        
+    topten_row_1 = Topten.select("*").where("user_id = ? AND sort = ?", curr_user_id, curr_sort + 1).first
+        
+    if !topten_row_1.blank?
+
+      Topten.update(topten_row_0.id, :sort => topten_row_1.sort)
+      Topten.update(topten_row_1.id, :sort => topten_row_0.sort)
+
+    else 
+
+      Topten.update(topten_row_0.id, :sort => topten_row_0.sort + 1)
+
+    end 
+
+    render :nothing => true
 
   end
 
@@ -374,6 +424,14 @@ class UsersController < ApplicationController
   def delete_blurb
 
     Blurb.destroy(params[:blurb_id])
+ 
+    render :nothing => true
+  
+  end
+
+  def delete_topten
+
+    Topten.destroy(params[:topten_id])
  
     render :nothing => true
   

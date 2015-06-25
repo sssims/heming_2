@@ -38,6 +38,11 @@ Rails.application.routes.draw do
      
       post :delete_blurb
 
+      post :delete_topten
+
+      post :topten_reorder_up
+      post :topten_reorder_down
+
       get :render_topten_modal
 
       get :get_books

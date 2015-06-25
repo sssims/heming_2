@@ -44,12 +44,34 @@ textarea {
   font-size: 11pt;
 }
 
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+
+  border-bottom: 9px solid #787878;
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+	
+  border-top: 9px solid #787878;
+}
+
 #feed_content {
   display: table;
   margin: auto;
 
   width: 450px;
+}
 
+.blurb_container {
+  display: table;
+  margin: auto;
 }
 
 #book_blurb {

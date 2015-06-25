@@ -1,9 +1,28 @@
 <div id='user-topten-container'>
   <% @user_topten.each do |blurb| %>
-    <div id='topten-blurb' class='blurb_container'>
-      <div id='topten-order'>
-        <%= blurb.order %>
+    <div id='order'>
+      <div id='order-content'>
+      <% if blurb.sort > 1 %>
+        <div id='<%= blurb.sort %>' class='topten-up'>
+          <div class='arrow-up'>
+          </div>
+        </div>
+      <% else %>
+        <div id='up-arrow-filler'>
+        </div>
+      <% end %>
+      <div id='number'>
+        <%= blurb.sort %>
       </div>
+      <% if blurb.sort < @user_topten.length %>
+        <div id='<%= blurb.sort %>' class='topten-down'>
+          <div class='arrow-down'>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+    <div id='topten-blurb-<%= blurb.sort %>' class='topten-blurb'> 
       <div id='cover'>
         <img src=<%= blurb.thumb_path %> class='info-switch'>
       </div>
@@ -12,7 +31,7 @@
           <%= link_to(blurb.fullname, {:controller => 'users', :action => 'show', :id => blurb.user_id })%>
         </div>
         <div id='date' class='blurb_text'>
-          <%= blurb.created_at %>
+          <%= blurb.created_at.strftime("%B %-d, %Y") %>
         </div>
         <div id='content' class='blurb_text'> 
           <%= blurb.blurb%>
@@ -20,13 +39,18 @@
         <div id='book-info' class='hidden blurb_text'>
           <%= blurb.title %>
         </div>
+        <% if blurb.user.id == @curr_user_id %>
+          <div id='delete' class='blurb_text'>
+            <a href='#' class='delete-topten-button' id=<%= blurb.topten_id %>>delete</a>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>
 </div>
 <% if @is_own_user %>
   <div id='add-topten-button' class='header-text'>
-    <a>+</a>
+    <a>Add</a>
   </div>
 <% end %>
 

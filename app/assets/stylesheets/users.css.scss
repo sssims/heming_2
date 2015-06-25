@@ -47,6 +47,9 @@
 }
 
 #user-posts-container {
+  display: table;
+  margin: auto;
+
   width: 500px;
 }
 
@@ -59,6 +62,113 @@
 #follow-button-container {
   cursor: pointer;
   cursor: hand;
+}
+
+/* 
+   top_ten.html.erb  
+     - plus partials 
+*/ 
+
+#user-topten-container {
+  display: table;
+  margin: auto;
+}
+
+.topten-blurb {
+  display: block;
+
+  overflow: hidden;
+
+  margin: 30px 0 20px 0;
+}
+
+#order {
+  float: left;
+
+  width: 80px;
+
+  margin: 45px 20px 0 0;
+
+  font-family: avenir, 'avenir next', helvetica, arial, sans-serif;
+  font-size: 36pt;
+  font-weight: 400;
+}
+
+#order-content {
+  float: right;
+}
+
+#up-arrow-filler {
+  height: 32px;
+}
+
+#order-content > .topten-up {
+  display: table;
+  margin: auto;
+
+  padding: 10px;
+
+  cursor: pointer;
+  cursor: hand;
+}
+
+#order-content > #number {
+  display: table;
+  margin: auto auto -3px auto;
+}
+
+#order-content > .topten-down {
+  display: table;
+  margin: auto;
+
+  padding: 10px;
+
+  cursor: pointer;
+  cursor: hand;
+}
+
+
+.topten-blurb > #cover {
+  float: left;
+
+  margin: 5px; 
+ 
+  cursor: pointer;
+  cursor: hand;
+}
+
+.topten-blurb > #cover > img {
+  border: 1px solid black;
+}
+
+.topten-blurb > #wrapper {
+  float: left;
+
+  max-width: 315px; 
+
+  margin: 3px auto auto 6px;
+}
+
+.topten-blurb > #wrapper > #user {
+  display: inline-block;
+
+  margin-right: 10px;
+}
+
+.topten-blurb > #wrapper > #user > a {
+  color: #000000;
+
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.topten-blurb > #wrapper > #date {
+  display: inline-block;
+
+  color: gray;
+}
+
+.topten-blurb > #wrapper > #content {
 }
 
 #add-topten-button {
@@ -117,6 +227,13 @@
 
   height: 30px;
   width: 440px;
+}
+
+#add-topten-button {
+  display: table;
+  margin: auto;
+
+  font-size: 40pt;
 }
 
 /* search.html.erb */
@@ -225,11 +342,11 @@
     margin: 5px 5px 5px 5px;
 
     cursor: pointer;
+    cursor: hand;
   }
 
   #perm_panel > #nav > .selected {
-    margin-right: 0px;
-    border-right: none;
+    color: #8B0000;
   }
 
   #perm_panel > #nav > .link > a {

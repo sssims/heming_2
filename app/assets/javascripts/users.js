@@ -96,11 +96,64 @@ $(document).on("click", "#more-user-show", function() {
 
 });
 
+$(document).on("click", ".topten-up", function() {
+  
+  var topten_id_0 = $(this).attr('id');
+  var topten_id_1 = (parseInt(topten_id_0) - 1).toString();
+
+  $.ajax({
+    type: "POST", 
+    url: "/users/topten_reorder_up",
+    data: { 'sort' : topten_id_0 }
+  });  
+
+  var topten_elem_0 = $("#topten-blurb-" + topten_id_0);
+  var topten_elem_1 = $("#topten-blurb-" + topten_id_1);
+
+  var temp = topten_elem_0.html();
+
+  topten_elem_0.html(topten_elem_1.html());
+
+  topten_elem_1.html(temp);
+
+});
+
+$(document).on("click", ".topten-down", function() {
+
+  var topten_id_0 = $(this).attr('id');
+  var topten_id_1 = (parseInt(topten_id_0) + 1).toString();
+
+  $.ajax({
+    type: "POST", 
+    url: "/users/topten_reorder_down",
+    data: { 'sort' : topten_id_0 }
+  });
+
+  var topten_elem_0 = $("#topten-blurb-" + topten_id_0);
+  var topten_elem_1 = $("#topten-blurb-" + topten_id_1);
+
+  var temp = topten_elem_0.html();
+
+  topten_elem_0.html(topten_elem_1.html());
+
+  topten_elem_1.html(temp);
+
+});
+
 $(document).on("click", ".delete_blurb_button", function() {
   $.ajax({
     type: "POST", 
     url: "/users/delete_blurb",
     data: { 'blurb_id' : $(this).attr('id') }
+  });  
+  $(this).parent().parent().parent().css("display", "none");
+});
+
+$(document).on("click", ".delete-topten-button", function() {
+  $.ajax({
+    type: "POST", 
+    url: "/users/delete_topten",
+    data: { 'topten_id' : $(this).attr('id') }
   });  
   $(this).parent().parent().parent().css("display", "none");
 });
