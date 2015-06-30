@@ -75,19 +75,37 @@ class UsersController < ApplicationController
 
   end
 
-  def new_follow(this_user, view_user)
+  def new_follow(this_user_id, view_user_id)
 
-     new_relat = Relationship.new(follower_id: this_user, followed_id: view_user)
+    new_relat = Relationship.new(follower_id: this_user_id, followed_id: view_user_id)
 
-     new_relat.save
+    new_relat.save
+
+    this_user = User.find(this_user_id)
+    view_user = User.find(view_user_id)
+
+    this_user.following_count = this_user.following_count + 1
+    view_user.follower_count = view_user.follower_count + 1
+
+    this_user.save
+    view_user.save
 
   end 
 
-  def un_follow(this_user, view_user)
+  def un_follow(this_user_id, view_user_id)
 
-    to_destroy = Relationship.where(follower_id: this_user, followed_id: view_user)
+    to_destroy = Relationship.where(follower_id: this_user_id, followed_id: view_user_id)
 
     Relationship.destroy(to_destroy.first.id)
+
+    this_user = User.find(this_user_id)
+    view_user = User.find(view_user_id)
+
+    this_user.following_count = this_user.following_count - 1
+    view_user.follower_count = view_user.follower_count - 1
+
+    this_user.save
+    view_user.save
 
   end
 
@@ -110,7 +128,7 @@ class UsersController < ApplicationController
 
   def logout
     session[:user_id] = nil
-    redirect_to(:controller => 'home', :action => 'index')
+    redirect_to(:controller => 'welcome', :action => 'index')
   end
   
   def users_show
@@ -172,7 +190,7 @@ class UsersController < ApplicationController
   def search
     user_query = params[:search_people_content]
 
-    if user_query.nil? or user_query = ""
+    if user_query.nil? or user_query == ""
       @results = User.where("username='Him'")
     else 
       @results = User.where("username LIKE ? OR fullname LIKE ? OR username='Him'", "%#{user_query}%", "%#{user_query}%")
@@ -417,7 +435,7 @@ class UsersController < ApplicationController
 
     @blurb_array = get_blurbs(@blurb_page)
 
-    render :partial => 'posts', :layout => false
+    render :partial => 'posts_feed', :layout => false
 
   end
 

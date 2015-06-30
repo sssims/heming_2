@@ -1,34 +1,3 @@
-<div id='user-posts-container'>
-  <% @blurb_array.each do |blurbs| %>
-    <div id='book_blurb' class='blurb_container'>
-      <div id='cover'>
-        <img src=<%= blurbs[0] %> class='info-switch'>
-      </div>
-      <div id='wrapper'>
-        <div id='user' class='blurb_text'>
-          <%= link_to(blurbs[3], {:controller => 'users', :action => 'show', :id => blurbs[4]})%>
-        </div>
-        <div id='date' class='blurb_text'>
-          <%= blurbs[5] %>
-        </div>
-        <div id='content' class='blurb_text'> 
-          <%= blurbs[2] %>
-        </div>
-        <div id='book-info' class='hidden blurb_text'>
-          <%= blurbs[1] %>
-        </div>
-        <% if blurbs[4] == @curr_user_id %>
-          <div id='delete' class='blurb_text'>
-            <a href='#' class='delete_blurb_button' id=<%= blurbs[6] %>>delete</a>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-  <div id='user-endless-page-<%= (@blurb_page + 1).to_s %>'>
-    <div id='more-user-show' class='header-text'>
-      <a class='header-text'>more</a>
-    </div>
-  </div>
+<div id='user-post-feed'>
+  <%= render :partial => 'posts_feed', :layout => false %>
 </div>
-

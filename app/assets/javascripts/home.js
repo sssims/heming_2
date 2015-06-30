@@ -1,10 +1,11 @@
 var blurb_page = 0;
+var page_name;
 
 function blurb_feed_change_page(page) {
-
+ 
   $.ajax({
     url: "/home/change_page",
-    data: { 'blurb_page' : page },
+    data: { 'blurb_page' : page, 'page_name' : page_name },
     success: function (result) {
       $("#endless-scroll").html(result);
       $("#endless-scroll").attr("id", "scroll-page-" + page); 

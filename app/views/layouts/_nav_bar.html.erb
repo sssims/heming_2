@@ -5,7 +5,7 @@
     </div>
     <div id='explore-dropdown' class='nav-dropdown'>
       <div id='explore-option-0' class='dropdown-option'>
-        <a>Featured</a>
+        <a><%= link_to("Featured", {:controller => 'home', :action => 'featured'})%></a>
       </div> 
       <div id='explore-option-1' class='dropdown-option'>
         <a>Trending</a>

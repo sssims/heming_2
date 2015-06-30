@@ -3,8 +3,14 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'home/index'
+
+  get 'home/featured'
+
   post 'home/change_page'
   get 'home/change_page'
+
+  post 'home/featured_change_page'
+  get 'home/featured_change_page'
 
   get 'welcome/index'
   get 'welcome/sign_up'

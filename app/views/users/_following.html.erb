@@ -1,11 +1,16 @@
 <div id='user-following-container'>
   <% @user_following.each do |f| %>
     <div class='user_summary'>
-      <div id='photo'>
+      <div id='follow-photo'>
         <img src=<%= f.photo_link_thumb %>>
       </div>
-      <div class='name'>
-        <a> <%= link_to(f.fullname, {:action => 'show', :id => f.followed_id}) %> </a>
+      <div class='follow-info-container'>
+        <div class='follow-followers'>
+          <a><%= f.follower_count %> Followers</a>
+        </div>
+        <div class='follow-name'>
+          <a> <%= link_to(f.fullname, {:action => 'show', :id => f.followed_id}) %> </a>
+        </div>
       </div>
     </div>
   <% end %>

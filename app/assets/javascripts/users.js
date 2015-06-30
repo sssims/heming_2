@@ -32,11 +32,35 @@ function user_blurb_feed_change_page(page) {
 
   $.ajax({
     url: "/users/change_page",
-    data: { 'blurb_page' : page, view_user :  view_user_id},
+    data: { 'blurb_page' : page, view_user :  view_user_id },
     success: function (result) {
-      $("#user-endless-page-" + page).html(result);
+      $("#user-endless-scroll").html(result);
+      $("#user-endless-scroll").attr("id", "scroll-page-" + page);
     }
   });
+
+  return;
+
+}
+
+function userScrollListener() {
+ 
+  var endless_scroll = $("#user-endless-scroll");
+
+  if(endless_scroll.length > 0) {
+
+    var element_top = endless_scroll.offset().top;
+    var scroll_top = $(window).scrollTop();
+    var scroll_bottom = scroll_top + $(window).height();
+
+    if (element_top > scroll_top && element_top < scroll_bottom) {
+      user_blurb_page++;
+      user_blurb_feed_change_page(user_blurb_page);
+    }
+
+  }
+
+  setTimeout(userScrollListener, 500); 
 
   return;
 
@@ -77,6 +101,7 @@ function init_user_show() {
   load_posts_ajax();
   load_topten_post_modal();
   topten_update_books() 
+  userScrollListener() 
 
 }
 
@@ -86,14 +111,6 @@ $(document).ready( function() {
 
 $(document).on('page:load', function() {
   init_user_show();
-});
-
-$(document).on("click", "#more-user-show", function() {
-
-  user_blurb_page++;
-
-  user_blurb_feed_change_page(user_blurb_page);
-
 });
 
 $(document).on("click", ".topten-up", function() {

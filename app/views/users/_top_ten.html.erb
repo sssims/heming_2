@@ -2,7 +2,7 @@
   <% @user_topten.each do |blurb| %>
     <div id='order'>
       <div id='order-content'>
-      <% if blurb.sort > 1 %>
+      <% if blurb.sort > 1 and @is_own_user %>
         <div id='<%= blurb.sort %>' class='topten-up'>
           <div class='arrow-up'>
           </div>
@@ -14,7 +14,7 @@
       <div id='number'>
         <%= blurb.sort %>
       </div>
-      <% if blurb.sort < @user_topten.length %>
+      <% if blurb.sort < @user_topten.length and @is_own_user %>
         <div id='<%= blurb.sort %>' class='topten-down'>
           <div class='arrow-down'>
           </div>

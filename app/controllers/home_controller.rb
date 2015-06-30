@@ -4,10 +4,17 @@ class HomeController < ApplicationController
 
     blurb_array = []
 
-    # the below is for selecting by 'credited' users
-    #blurbs = Blurb.select("*").joins(:user, :book).where("users.cred = ?", true).order(updated_at: :desc)
+    blurbs = nil
 
-    blurbs = Blurb.select("*, blurbs.id as blurb_id").joins(:user, :book).order(updated_at: :desc).offset(page_number * 10).limit(10)
+    if @page_name == 'index' 
+      blurbs = Blurb.select("*, blurbs.id AS blurb_id").joins(:user, :book).order(created_at: :desc).offset(page_number * 10).limit(10)
+    elsif @page_name == 'featured'
+      blurbs = Blurb.select("*, blurbs.id AS blurb_id").joins(:user, :book).where("users.cred = ?", 't').order(created_at: :desc).offset(page_number * 10).limit(10)
+    elsif @page_name == 'following'
+      blurbs = Blurb.select("*, blurbs.id AS blurb_id").joins('INNER JOIN users ON users.id=blurbs.user_id INNER JOIN books ON books.id=blurbs.book_id INNER JOIN relationships ON users.id=followed_id').where("follower_id = ?", session[:user_id]).order(created_at: :desc).offset(page_number * 10).limit(10)
+    else
+      #error
+    end
 
     blurbs.each do |blurb|
 
@@ -35,19 +42,33 @@ class HomeController < ApplicationController
 
   def index
 
+    @page_name = "following"
+
     @blurb_page = 0
 
     @blurb_array = get_blurbs(@blurb_page)
 
   end
 
+  def featured
+
+    @page_name = "featured"
+
+    @blurb_page = 0
+    
+    @blurb_array = get_blurbs(@blurb_page)
+
+  end
+
   def change_page
+
+    @page_name = params[:page_name]
    
     @blurb_page = Integer(params[:blurb_page])
  
     @blurb_array = get_blurbs(@blurb_page)
 
-    render :partial => 'layouts/blurb_feed', :layout => false
+    render :partial => 'index_feed', :layout => false
 
   end
 
