@@ -17,8 +17,11 @@
         <%= blurbs[1] %>
       </div>
       <% if blurbs[4] == @curr_user_id %>
-        <div id='delete' class='blurb_text'>
-          <a href='#' class='delete_blurb_button' id=<%= blurbs[6] %>>delete</a>
+        <div>
+          <i id='<%= blurbs[6] %>' class='fa fa-pencil blurb-edit'></i>
+        </div>
+        <div>
+          <i id='<%= blurbs[6] %>' class='fa fa-trash blurb-trash'></i>
         </div>
       <% end %>
     </div>

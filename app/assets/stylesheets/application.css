@@ -318,6 +318,28 @@ textarea {
   margin: -6px 7px 0 40px;
 }
 
+.blurb-edit {
+  float: left;
+
+  margin: 2px 4px 0 0;
+
+  color: #383838;
+
+  cursor: hand;
+  cursor: pointer;
+}
+
+.blurb-trash {
+  float: left;
+
+  margin: 2px 4px 0 4px;
+  
+  color: #383838;
+
+  cursor: hand;
+  cursor: pointer;
+}
+
 #search_people_content {
 
   width: 100%;

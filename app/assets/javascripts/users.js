@@ -157,7 +157,7 @@ $(document).on("click", ".topten-down", function() {
 
 });
 
-$(document).on("click", ".delete_blurb_button", function() {
+$(document).on("click", ".blurb-trash", function() {
   $.ajax({
     type: "POST", 
     url: "/users/delete_blurb",

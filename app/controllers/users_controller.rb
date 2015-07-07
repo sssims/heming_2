@@ -254,7 +254,7 @@ class UsersController < ApplicationController
   def get_blurbs(page_number=0)
 
       blurb_array = []
-      blurbs = Blurb.select("*, blurbs.id as blurb_id").joins(:user, :book).where(user_id: params[:view_user]).order(updated_at: :desc).offset(page_number * 10).limit(10)
+      blurbs = Blurb.select("*, blurbs.id AS blurb_id").joins(:user, :book).where(user_id: params[:view_user]).order(updated_at: :desc).offset(page_number * 10).limit(10)
   
       blurbs.each do |blurb|
         one_blurb = []
