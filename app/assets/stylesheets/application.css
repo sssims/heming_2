@@ -306,7 +306,11 @@ textarea {
 
 #mag-glass {
   float: left;
-  margin-top: 5px;
+  margin-top: 9px;
+}
+
+.mag-glass-icon {
+  color: #383838;
 }
 
 #post-book-link {

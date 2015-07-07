@@ -37,9 +37,6 @@
       </div>
     </div>
     <div id='nav-post-book' class='nav-item'>
-      <div id='pencil'>
-        <img src='/pencil.png'>
-      </div>
       <a id="post-book-link">POST</a>
     </div>
   <% else %>
@@ -51,7 +48,7 @@
     </div>
   <% end %>
   <div id='mag-glass'> 
-    <img src='/mag_glass.png'>
+    <i class='fa fa-search fa-lg mag-glass-icon'></i>
   </div>
   <div id='nav-search'>
     <%= form_tag :controller => 'users', :action => 'search' do %>
