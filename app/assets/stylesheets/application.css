@@ -65,19 +65,19 @@ textarea {
 .nav-arrow-up {
   width: 0; 
   height: 0; 
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
 	
-  border-bottom: 7px solid #686868;
+  border-bottom: 6px solid black;
 }
 
 .nav-arrow-down {
   width: 0; 
   height: 0; 
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
 	
-  border-top: 7px solid #686868;
+  border-top: 6px solid black;
 }
 
 #feed_content {
@@ -411,7 +411,7 @@ textarea {
   box-shadow: 0px 2px 3px 1px rgba(212,212,212,1);
 
 */
-  border-color: #686868;
+  border-color: black;
   border-width: 1px 1px 1px 1px;
   border-style: solid;
 
