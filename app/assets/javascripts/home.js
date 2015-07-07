@@ -42,18 +42,26 @@ $(document).on('click', function(event) {
   if (!$(event.target).closest('#personal-name').length) {
 
     var personal_dropdown = $("#personal-dropdown");
+    var personal_arrow = $("#personal-arrow");
 
     personal_dropdown.css("visibility", "hidden");
     personal_dropdown.css("margin-top", "-200px"); // HACK
+
+    personal_arrow.removeClass("nav-arrow-up");
+    personal_arrow.addClass("nav-arrow-down");
 
   } 
 
   if (!$(event.target).closest('#explore-name').length) {
 
     var explore_dropdown = $("#explore-dropdown");
+    var explore_arrow = $("#explore-arrow");
 
     explore_dropdown.css("visibility", "hidden");
     explore_dropdown.css("margin-top", "-200px"); // HACK
+
+    explore_arrow.removeClass("nav-arrow-up");
+    explore_arrow.addClass("nav-arrow-down");
  
   }
 
@@ -61,20 +69,26 @@ $(document).on('click', function(event) {
 
 function navMenuDropdownListener() {
 
+  var personal_arrow = $("#personal-arrow");
   var personal_button = $("#personal-name");
   var personal_dropdown = $("#personal-dropdown");  
 
+  var explore_arrow = $("#explore-arrow");
   var explore_button= $("#explore-name");
   var explore_dropdown = $("#explore-dropdown");  
 
   personal_button.click(function() {
     personal_dropdown.css("visibility", "visible"); 
-    personal_dropdown.css("margin-top", "8px"); // HACK
+    personal_dropdown.css("margin-top", "0px"); // HACK
+    personal_arrow.removeClass("nav-arrow-down");
+    personal_arrow.addClass("nav-arrow-up");
   });
 
   explore_button.click(function() {
     explore_dropdown.css("visibility", "visible"); 
-    explore_dropdown.css("margin-top", "8px"); // HACK
+    explore_dropdown.css("margin-top", "0px"); // HACK
+    explore_arrow.removeClass("nav-arrow-down");
+    explore_arrow.addClass("nav-arrow-up");
   });
 
 }

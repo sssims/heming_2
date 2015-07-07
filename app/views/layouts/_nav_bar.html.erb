@@ -1,7 +1,46 @@
 <div id='nav-container'>
+  <% if @logged_in %>
+    <div id='nav-post-book' class='nav-item'>
+      <a id="post-book-link">POST</a>
+    </div>
+    <div id='nav-personal' class='nav-item'>
+      <div id='personal-name'>
+        <a><%= @curr_fullname.upcase %></a>
+      </div>
+      <div id='personal-arrow' class='nav-arrow-down'>
+      </div>
+      <div id='personal-dropdown' class='nav-dropdown'>
+        <!--<div id='personal-option-0' class='dropdown-option'>
+          <a><%#= link_to("Home", {:controller => 'home', :action => 'index'})%></a>
+        </div>-->
+        <div id='personal-option-1' class='dropdown-option'>
+          <a><%= link_to("Profile", {:controller => 'users', :action => 'show', :id => @curr_user_id })%></a>
+        </div> 
+        <div id='personal-option-2' class='dropdown-option'>
+          <!--<a><%= link_to("Settings", {:controller => 'users', :action => 'new'})%></a>-->
+          <a>Settings</a>
+        </div> 
+        <div id='personal-option-3' class='dropdown-option'>
+          <a><%= link_to("Logout", {:controller => 'users', :action => 'logout'})%></a>
+        </div> 
+      </div>
+    </div>
+  <% else %>
+    <div id='nav-signup' class='nav-item'>
+      <%= link_to("SIGN UP", {:controller => 'users', :action => 'new'})%>
+    </div>
+    <div id='nav-login' class='nav-item'> 
+      <%= link_to("LOGIN", {:controller => 'users', :action => 'login'})%>
+    </div>
+  <% end %>
+  <div id='mag-glass'> 
+    <i class='fa fa-search fa-lg mag-glass-icon'></i>
+  </div>
   <div id='nav-explore' class='nav-item'>
     <div id='explore-name'>
       <a>EXPLORE</a>
+    </div>
+    <div id='explore-arrow' class='nav-arrow-down'>
     </div>
     <div id='explore-dropdown' class='nav-dropdown'>
       <div id='explore-option-0' class='dropdown-option'>
@@ -16,40 +55,10 @@
     </div>
   </div>
   <% if @logged_in %>
-    <div id='nav-personal' class='nav-item'>
-      <div id='personal-name'>
-        <a><%= @curr_fullname.upcase %></a>
-      </div>
-      <div id='personal-dropdown' class='nav-dropdown'>
-        <div id='personal-option-0' class='dropdown-option'>
-          <a><%= link_to("Home", {:controller => 'home', :action => 'index'})%></a>
-        </div> 
-        <div id='personal-option-1' class='dropdown-option'>
-          <a><%= link_to("Profile", {:controller => 'users', :action => 'show', :id => @curr_user_id })%></a>
-        </div> 
-        <div id='personal-option-2' class='dropdown-option'>
-          <!--<a><%= link_to("Settings", {:controller => 'users', :action => 'new'})%></a>-->
-          <a>Settings</a>
-        </div> 
-        <div id='personal-option-3' class='dropdown-option'>
-          <a><%= link_to("Logout", {:controller => 'users', :action => 'logout'})%></a>
-        </div> 
-      </div>
-    </div>
-    <div id='nav-post-book' class='nav-item'>
-      <a id="post-book-link">POST</a>
-    </div>
-  <% else %>
-    <div id='nav-signup' class='nav-item'>
-      <%= link_to("SIGN UP", {:controller => 'users', :action => 'new'})%>
-    </div>
-    <div id='nav-login' class='nav-item'> 
-      <%= link_to("LOGIN", {:controller => 'users', :action => 'login'})%>
+    <div id='nav-home' class='nav-item'>
+      <a><%= link_to("HOME", {:controller => 'home', :action => 'index'})%></a>  
     </div>
   <% end %>
-  <div id='mag-glass'> 
-    <i class='fa fa-search fa-lg mag-glass-icon'></i>
-  </div>
   <div id='nav-search'>
     <%= form_tag :controller => 'users', :action => 'search' do %>
      <%= text_field_tag :search_people_content, nil, :autocomplete => 'off', :placeholder => 'Search people...' %>
