@@ -321,7 +321,11 @@ textarea {
   float: left;
 
   margin-left: 40px;
-  margin-top: -6px;
+  margin-top: -5px;
+}
+
+#nav-home-icon:hover {
+  color: #AB0000;
 }
 
 #nav-explore {

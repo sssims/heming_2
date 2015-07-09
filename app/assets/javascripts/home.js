@@ -71,7 +71,7 @@ function searchFocusListener() {
 
 
   $("#search_people_content").focusin( function() {
-    $("#mag-glass-icon").css("color", "#000000");
+    $("#mag-glass-icon").css("color", "#AB0000");
   }).focusout( function() {
     $("#mag-glass-icon").css("color", "#979797");
   });
