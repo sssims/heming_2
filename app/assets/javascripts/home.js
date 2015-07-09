@@ -109,3 +109,9 @@ $(document).on("page:load", function() {
   initPage();
 });
 
+$(document).on("click", "#explore-option-0", function() {
+
+});
+
+
+

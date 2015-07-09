@@ -40,8 +40,11 @@
           <%= blurb.title %>
         </div>
         <% if blurb.user.id == @curr_user_id %>
-          <div id='delete' class='blurb_text'>
-            <a href='#' class='delete-topten-button' id=<%= blurb.topten_id %>>delete</a>
+          <div>
+            <i id='<%= blurb.topten_id %>' class='fa fa-pencil blurb-edit'></i>
+          </div>
+          <div>
+            <i id='<%= blurb.topten_id %>' class='fa fa-trash blurb-trash'></i>
           </div>
         <% end %>
       </div>

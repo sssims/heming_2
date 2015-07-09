@@ -1,11 +1,20 @@
-<% if !@is_own_user and @logged_in %>
+<% if @logged_in %>
+  <% if !@is_own_user %>
 
-  <div id='follow-button' class='follow-button'>
-    <% if @is_following %>
-      <a>Unfollow</a>
-    <% else %>
-      <a>Follow</a>
-    <% end %>
-  </div>
+    <div id='follow-button' class='follow-button'>
+      <% if @is_following %>
+        <a>Unfollow</a>
+      <% else %>
+        <a>Follow</a>
+      <% end %>
+    </div>
 
+  <% else %>
+
+    <div id='edit-profile-button'>
+      <a>Edit Profile</a>
+    </div>
+
+  <% end %>
 <% end %>
+

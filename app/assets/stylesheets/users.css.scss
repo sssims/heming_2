@@ -354,6 +354,20 @@
     letter-spacing: -0.5pt;
   } 
 
+  #edit-profile-button {
+    display: inline-block;
+    margin: 5px auto 5px auto;
+
+    padding: 4px;
+ 
+    font-size: 11pt;
+
+    border: 1px solid black;
+
+    cursor: pointer;
+    cursor: hand;
+  }
+
   #perm_panel > #nav {
     display: table;
     margin: auto;

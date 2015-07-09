@@ -352,7 +352,7 @@ textarea {
 .blurb-edit {
   float: left;
 
-  margin: 2px 4px 0 0;
+  margin: 2px 6px 0 0;
 
   color: #383838;
 
@@ -363,7 +363,7 @@ textarea {
 .blurb-trash {
   float: left;
 
-  margin: 2px 4px 0 4px;
+  margin: 2px 4px 0 6px;
   
   color: #383838;
 
@@ -400,8 +400,8 @@ textarea {
 .nav-dropdown {
 
   margin-top: -200px; /* HACK */
-  margin-left: -18px;
-  margin-right: -20px;
+  margin-left: -16px;
+  margin-right: -16px;
 
   padding: 8px 0;
 
@@ -418,6 +418,14 @@ textarea {
   background-color: white;
 
   visibility: hidden;
+}
+
+.nav-dropdown:hover {
+  color: black;
+}
+
+.nav-dropdown a {
+  color: #5A5A5A;
 }
 
 #nav-container {
@@ -445,7 +453,9 @@ textarea {
 }
 
 .dropdown-option {
-  padding: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 14px;
+
+
 }
 
 .dropdown-option:hover {
