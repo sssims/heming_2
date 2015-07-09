@@ -336,8 +336,8 @@ textarea {
   margin: 9px 0 0 60px;
 }
 
-.mag-glass-icon {
-  color: #767676;
+#mag-glass-icon {
+  color: #929292;
 }
 
 #post-book-link {
@@ -360,7 +360,7 @@ textarea {
   cursor: pointer;
 }
 
-.blurb-trash {
+.blurb-trash, .topten-trash {
   float: left;
 
   margin: 2px 4px 0 6px;
@@ -398,8 +398,9 @@ textarea {
 }
 
 .nav-dropdown {
-
+ 
   margin-top: -200px; /* HACK */
+
   margin-left: -16px;
   margin-right: -16px;
 
@@ -411,17 +412,14 @@ textarea {
   box-shadow: 0px 2px 3px 1px rgba(212,212,212,1);
 
 */
-  border-color: black;
+
+  border-color: white;
   border-width: 1px 1px 1px 1px;
   border-style: solid;
 
   background-color: white;
 
   visibility: hidden;
-}
-
-.nav-dropdown:hover {
-  color: black;
 }
 
 .nav-dropdown a {
@@ -454,8 +452,6 @@ textarea {
 
 .dropdown-option {
   padding: 10px 10px 10px 14px;
-
-
 }
 
 .dropdown-option:hover {

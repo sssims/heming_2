@@ -1,52 +1,54 @@
 <div id='user-topten-container'>
   <% @user_topten.each do |blurb| %>
-    <div id='order'>
-      <div id='order-content'>
-      <% if blurb.sort > 1 and @is_own_user %>
-        <div id='<%= blurb.sort %>' class='topten-up'>
-          <div class='arrow-up'>
+    <div id='topten-post-container'>
+      <div id='order'>
+        <div id='order-content'>
+        <% if blurb.sort > 1 and @is_own_user %>
+          <div id='<%= blurb.sort %>' class='topten-up'>
+            <div class='arrow-up'>
+            </div>
           </div>
-        </div>
-      <% else %>
-        <div id='up-arrow-filler'>
-        </div>
-      <% end %>
-      <div id='number'>
-        <%= blurb.sort %>
-      </div>
-      <% if blurb.sort < @user_topten.length and @is_own_user %>
-        <div id='<%= blurb.sort %>' class='topten-down'>
-          <div class='arrow-down'>
-          </div>
-        </div>
-      <% end %>
-      </div>
-    </div>
-    <div id='topten-blurb-<%= blurb.sort %>' class='topten-blurb'> 
-      <div id='cover'>
-        <img src=<%= blurb.thumb_path %> class='info-switch'>
-      </div>
-      <div id='wrapper'>
-        <div id='user' class='blurb_text'>
-          <%= link_to(blurb.fullname, {:controller => 'users', :action => 'show', :id => blurb.user_id })%>
-        </div>
-        <div id='date' class='blurb_text'>
-          <%= blurb.created_at.strftime("%B %-d, %Y") %>
-        </div>
-        <div id='content' class='blurb_text'> 
-          <%= blurb.blurb%>
-        </div>
-        <div id='book-info' class='hidden blurb_text'>
-          <%= blurb.title %>
-        </div>
-        <% if blurb.user.id == @curr_user_id %>
-          <div>
-            <i id='<%= blurb.topten_id %>' class='fa fa-pencil blurb-edit'></i>
-          </div>
-          <div>
-            <i id='<%= blurb.topten_id %>' class='fa fa-trash blurb-trash'></i>
+        <% else %>
+          <div id='up-arrow-filler'>
           </div>
         <% end %>
+        <div id='number'>
+          <%= blurb.sort %>
+        </div>
+        <% if blurb.sort < @user_topten.length and @is_own_user %>
+          <div id='<%= blurb.sort %>' class='topten-down'>
+            <div class='arrow-down'>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      </div>
+      <div id='topten-blurb-<%= blurb.sort %>' class='topten-blurb'> 
+        <div id='cover'>
+          <img src=<%= blurb.thumb_path %> class='info-switch'>
+        </div>
+        <div id='wrapper'>
+          <div id='user' class='blurb_text'>
+            <%= link_to(blurb.fullname, {:controller => 'users', :action => 'show', :id => blurb.user_id })%>
+          </div>
+          <div id='date' class='blurb_text'>
+            <%= blurb.created_at.strftime("%B %-d, %Y") %>
+          </div>
+          <div id='content' class='blurb_text'> 
+            <%= blurb.blurb%>
+          </div>
+          <div id='book-info' class='hidden blurb_text'>
+            <%= blurb.title %>
+          </div>
+          <% if blurb.user.id == @curr_user_id %>
+            <div>
+              <i id='<%= blurb.topten_id %>' class='fa fa-pencil blurb-edit'></i>
+            </div>
+            <div>
+              <i id='<%= blurb.topten_id %>' class='fa fa-trash topten-trash'></i>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>

@@ -5,9 +5,9 @@
   <a>TOP TEN</a>
 </div>
 <div id='post-form-div'>
-  <%= form_tag :controller => 'users', :action => 'get_books', :id => 'book_form' do %>
+  <%#= form_tag :controller => 'users', :action => 'get_books', :id => 'book_form' do %>
     <%= text_field_tag :topten_books_search_field, nil, :autocomplete => 'off', placeholder: "title or author" %>
-  <% end %>
+  <%# end %>
 </div>
 <div id='post-topten-book-results-target'>
 </div>

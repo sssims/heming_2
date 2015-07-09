@@ -67,6 +67,17 @@ $(document).on('click', function(event) {
 
 });
 
+function searchFocusListener() {
+
+
+  $("#search_people_content").focusin( function() {
+    $("#mag-glass-icon").css("color", "#000000");
+  }).focusout( function() {
+    $("#mag-glass-icon").css("color", "#979797");
+  });
+
+}
+
 function navMenuDropdownListener() {
 
   var personal_arrow = $("#personal-arrow");
@@ -98,6 +109,7 @@ function initPage() {
 
   scrollListener();
   navMenuDropdownListener();
+  searchFocusListener();
 }
 
 $(document).ready(function () {
@@ -109,9 +121,7 @@ $(document).on("page:load", function() {
   initPage();
 });
 
-$(document).on("click", "#explore-option-0", function() {
-
+$(document).on("click", "#mag-glass", function() {
+  $("#search_people_content").focus();
 });
-
-
 

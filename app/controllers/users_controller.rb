@@ -449,10 +449,25 @@ class UsersController < ApplicationController
 
   def delete_topten
 
-    Topten.destroy(params[:topten_id])
+    user_id = session[:user_id]
+
+    deleted_sort = Topten.find(params[:topten_id]).sort
+
+    users_toptens = Topten.select("id, user_id, sort").where(user_id: user_id).order(:sort)
+
+    users_toptens.each do |item|
  
+      if item.sort == deleted_sort
+        item.destroy
+      elsif item.sort > deleted_sort
+        item.sort = item.sort - 1
+        item.save
+      end 
+
+    end
+
     render :nothing => true
-  
+
   end
 
 end

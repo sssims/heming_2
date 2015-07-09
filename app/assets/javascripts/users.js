@@ -166,13 +166,16 @@ $(document).on("click", ".blurb-trash", function() {
   $(this).parent().parent().parent().css("display", "none");
 });
 
-$(document).on("click", ".delete-topten-button", function() {
+$(document).on("click", ".topten-trash", function() {
   $.ajax({
     type: "POST", 
     url: "/users/delete_topten",
-    data: { 'topten_id' : $(this).attr('id') }
+    data: { 'topten_id' : $(this).attr('id') },
+    success: function (result) {
+      $("#info_window").html(result);
+    }
   });  
-  $(this).parent().parent().parent().css("display", "none");
+  $(this).parent().parent().parent().parent().css("display", "none");
 });
 
 $(document).on("click", "#follow-button", function() {
