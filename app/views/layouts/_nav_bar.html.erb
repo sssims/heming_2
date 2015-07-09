@@ -1,8 +1,10 @@
 <div id='nav-container'>
   <% if @logged_in %>
-    <div id='nav-home-button' class='nav-item'>
-      <i id='nav-home-icon' class='fa fa-book fa-2x'></i>
-    </div>
+    <%= link_to({:controller => :home, :action => :index}, :id => 'home-icon-href') do %>
+      <div id='nav-home-button' class='nav-item'>
+        <i id='nav-home-icon' class='fa fa-home fa-2x'></i>
+      </div>
+    <% end %>
     <div id='nav-post-book' class='nav-item'>
       <a id="post-book-link">POST</a>
     </div>
@@ -16,16 +18,20 @@
         <!--<div id='personal-option-0' class='dropdown-option'>
           <a><%#= link_to("Home", {:controller => 'home', :action => 'index'})%></a>
         </div>-->
-        <div id='personal-option-1' class='dropdown-option'>
-          <a><%= link_to("Profile", {:controller => 'users', :action => 'show', :id => @curr_user_id })%></a>
-        </div> 
+          <%= link_to({:controller => :users, :action => :show, :id => @curr_user_id }) do %>
+            <div id='personal-option-1' class='dropdown-option'>
+              Profile
+            </div> 
+        <% end %>
         <div id='personal-option-2' class='dropdown-option'>
           <!--<a><%= link_to("Settings", {:controller => 'users', :action => 'new'})%></a>-->
           <a>Settings</a>
         </div> 
-        <div id='personal-option-3' class='dropdown-option'>
-          <a><%= link_to("Logout", {:controller => 'users', :action => 'logout'})%></a>
-        </div> 
+        <%= link_to({:controller => 'users', :action => 'logout'}) do %>
+          <div id='personal-option-3' class='dropdown-option'>
+            Logout
+          </div> 
+        <% end %>
       </div>
     </div>
   <% else %>
@@ -35,6 +41,11 @@
     <div id='nav-login' class='nav-item'> 
       <%= link_to("LOGIN", {:controller => 'users', :action => 'login'})%>
     </div>
+    <%= link_to({:controller => :welcome, :action => :index}, :id => 'home-icon-href') do %>
+      <div id='nav-home-button' class='nav-item'>
+        <i id='nav-home-icon' class='fa fa-home fa-2x'></i>
+      </div>
+    <% end %>
   <% end %>
   <div id='mag-glass'> 
     <i id='mag-glass-icon' class='fa fa-search fa-lg'></i>
@@ -46,9 +57,11 @@
     <div id='explore-arrow' class='nav-arrow-down'>
     </div>
     <div id='explore-dropdown' class='nav-dropdown'>
-      <div id='explore-option-0' class='dropdown-option'>
-        <a><%= link_to("Featured", {:controller => 'home', :action => 'featured'})%></a>
-      </div> 
+      <%= link_to({:controller => 'home', :action => 'featured'}) do %>
+        <div id='explore-option-0' class='dropdown-option'>
+          Featured
+        </div> 
+      <% end %>
       <div id='explore-option-1' class='dropdown-option'>
         <a>Trending</a>
       </div> 

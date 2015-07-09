@@ -125,3 +125,31 @@ $(document).on("click", "#mag-glass", function() {
   $("#search_people_content").focus();
 });
 
+/* Blurb Edit Functionality */
+
+var curr_edit_count = 0
+
+$(document).on("click", ".blurb-edit", function () {
+
+  var blurb_elem = $(this).parent().parent().children("#content");
+
+  var blurb_text = blurb_elem.children("a").html().toString();
+
+  blurb_elem.html("<div class='edit-blurb-container'><form action='/users/edit_blurb' accept-charset='UTF-8' method='post'><div class='blurb-edit-input-container'><input id='edit-" + curr_edit_count.toString() + "' type='text' class='edit-blurb-form'></div><input type='submit' value='submit' class='edit-blurb-submit'><input type='button' value='cancel' class='edit-blurb-cancel'></form></div>");
+
+  var edit_elem = $("#edit-" + curr_edit_count++);
+
+  edit_elem.focus();
+  edit_elem.val(blurb_text);
+
+});
+
+$(document).on("click", ".edit-blurb-cancel", function() {
+  var blurb_text = $(this).parent().children(".blurb-edit-input-container").children('.edit-blurb-form').val();
+
+  $(this).parent().parent().parent().html("<a>" + blurb_text + "</a>");
+
+  curr_edit_count--;
+});
+
+

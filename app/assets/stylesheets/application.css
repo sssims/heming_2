@@ -321,7 +321,12 @@ textarea {
   float: left;
 
   margin-left: 40px;
-  margin-top: -5px;
+  margin-top: -4px;
+
+}
+
+#home-icon-href {
+  color: black;
 }
 
 #nav-home-icon:hover {
@@ -473,4 +478,56 @@ textarea {
   height: 54px;
   margin-bottom: 30px;
 }
+
+/* Edit Blurb Styles */
+
+.edit-blurb-container {
+
+}
+
+.edit-blurb-input-container {
+
+}
+
+.edit-blurb-form {
+  height: 150px;
+  width: 300px;
+
+  padding: 0px 0px 0px 7px;
+
+  border: solid 1px #BCBCBC;
+
+  font-family: "Courier New", Courier, monospace;
+}
+
+.edit-blurb-submit, .edit-blurb-cancel {
+  margin: 6px 5px 4px 0;
+
+  height: 24px;
+  width: 42px;
+
+  border: 0px;
+
+  background-color: #000000;
+
+  text-align: center;
+
+  font-family: avenir, 'avenir next', helvetica, arial, sans-serif;
+
+  font-size: 7pt;
+
+  color: #FFFFFF;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
