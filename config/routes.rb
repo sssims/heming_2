@@ -60,6 +60,8 @@ Rails.application.routes.draw do
       get :submit_book
       post :submit_book
 
+      get :settings
+
     end
   end
 

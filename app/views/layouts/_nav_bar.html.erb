@@ -23,10 +23,11 @@
               Profile
             </div> 
         <% end %>
-        <div id='personal-option-2' class='dropdown-option'>
-          <!--<a><%= link_to("Settings", {:controller => 'users', :action => 'new'})%></a>-->
-          <a>Settings</a>
-        </div> 
+        <%= link_to({:controller => 'users', :action => 'settings'}) do %>
+          <div id='personal-option-2' class='dropdown-option'>
+            Settings
+          </div> 
+        <% end %>
         <%= link_to({:controller => 'users', :action => 'logout'}) do %>
           <div id='personal-option-3' class='dropdown-option'>
             Logout
@@ -50,6 +51,7 @@
   <div id='mag-glass'> 
     <i id='mag-glass-icon' class='fa fa-search fa-lg'></i>
   </div>
+  <!--
   <div id='nav-explore' class='nav-item'>
     <div id='explore-name'>
       <a>EXPLORE</a>
@@ -70,6 +72,7 @@
       </div> 
     </div>
   </div>
+  -->
   <% if @logged_in %>
     <div id='nav-home' class='nav-item'>
       <a><%= link_to("HOME", {:controller => 'home', :action => 'index'})%></a>  

@@ -470,4 +470,10 @@ class UsersController < ApplicationController
 
   end
 
+  def settings
+
+   @user_info = User.find(session[:user_id])
+
+  end
+
 end
