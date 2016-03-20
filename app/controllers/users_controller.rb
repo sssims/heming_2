@@ -19,6 +19,8 @@ class UsersController < ApplicationController
     @user.cred = false
     @user.photo_link_full = '/serve_user_photo/default_full.jpeg'
     @user.photo_link_thumb = '/serve_user_photo/default_thumb.jpeg'
+    @user.follower_count = 0
+    @user.following_count = 0
 
     if @user.save
       session[:user_id] = @user.id
@@ -101,8 +103,13 @@ class UsersController < ApplicationController
     this_user = User.find(this_user_id)
     view_user = User.find(view_user_id)
 
-    this_user.following_count = this_user.following_count - 1
-    view_user.follower_count = view_user.follower_count - 1
+    if !this_user.following_count.nil?
+       this_user.following_count = this_user.following_count - 1
+    end
+
+    if !this_user.follower_count.nil?
+       view_user.follower_count = view_user.follower_count - 1
+    end
 
     this_user.save
     view_user.save
